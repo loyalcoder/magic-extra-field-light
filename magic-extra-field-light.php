@@ -1,15 +1,15 @@
 <?php
 
 /**
- * Plugin Name:       Magic Extra Field
+ * Plugin Name:       Magic Extra Field Light
  * Plugin URI:        https://marlink-checkout.com
- * Description:       Add extra fields to WordPress
+ * Description:       Add extra fields to WordPress - Light version
  * Version:           1.0.0
  * Author:            Loyalcoder
  * Author URI:        https://loyalcoder.com
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       magic-extra-field
+ * Text Domain:       magic-extra-field-light
  * Domain Path:       /languages
  * Elementor support: true
  * Requires at least: 5.8
@@ -17,7 +17,6 @@
  * WC requires at least: 6.0
  * WC tested up to:   8.7
  * Requires Plugins:  woocommerce, elementor
-
  */
 
 if (!defined('ABSPATH')) {
@@ -29,7 +28,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 /**
  * Main plugin class
  */
-final class Magic_Extra_Field
+final class Magic_Extra_Field_Light
 {
     /**
      * Plugin version
@@ -53,7 +52,7 @@ final class Magic_Extra_Field
     /**
      * Initialize singleton instance
      *
-     * @return \Magic_Extra_Field
+     * @return \Magic_Extra_Field_Light
      */
     public static function init()
     {
@@ -73,15 +72,15 @@ final class Magic_Extra_Field
      */
     public function define_constants()
     {
-        define('MAGIC_EXTRA_FIELD_VERSION', self::version);
-        define('MAGIC_EXTRA_FIELD_FILE', __FILE__);
-        define('MAGIC_EXTRA_FIELD_PATH', __DIR__);
-        define('MAGIC_EXTRA_FIELD_URL', plugins_url('', MAGIC_EXTRA_FIELD_FILE));
-        define('MAGIC_EXTRA_FIELD_ASSETS', MAGIC_EXTRA_FIELD_URL . '/assets');
-        define('MAGIC_EXTRA_FIELD_ASSETS_DIST', MAGIC_EXTRA_FIELD_ASSETS . '/dist');
-        define('MAGIC_EXTRA_FIELD_ASSETS_VENDORS', MAGIC_EXTRA_FIELD_ASSETS . '/vendors');
-        define('MAGIC_EXTRA_FIELD_DIR_PATH', plugin_dir_path(__FILE__));
-        define('MAGIC_EXTRA_FIELD_ELEMENTOR', MAGIC_EXTRA_FIELD_DIR_PATH . 'includes/Elementor/');
+        define('MAGIC_EXTRA_FIELD_LIGHT_VERSION', self::version);
+        define('MAGIC_EXTRA_FIELD_LIGHT_FILE', __FILE__);
+        define('MAGIC_EXTRA_FIELD_LIGHT_PATH', __DIR__);
+        define('MAGIC_EXTRA_FIELD_LIGHT_URL', plugins_url('', MAGIC_EXTRA_FIELD_LIGHT_FILE));
+        define('MAGIC_EXTRA_FIELD_LIGHT_ASSETS', MAGIC_EXTRA_FIELD_LIGHT_URL . '/assets');
+        define('MAGIC_EXTRA_FIELD_LIGHT_ASSETS_DIST', MAGIC_EXTRA_FIELD_LIGHT_ASSETS . '/dist');
+        define('MAGIC_EXTRA_FIELD_LIGHT_ASSETS_VENDORS', MAGIC_EXTRA_FIELD_LIGHT_ASSETS . '/vendors');
+        define('MAGIC_EXTRA_FIELD_LIGHT_DIR_PATH', plugin_dir_path(__FILE__));
+        define('MAGIC_EXTRA_FIELD_LIGHT_ELEMENTOR', MAGIC_EXTRA_FIELD_LIGHT_DIR_PATH . 'includes/Elementor/');
     }
 
     /**
@@ -91,7 +90,7 @@ final class Magic_Extra_Field
      */
     public function activate()
     {
-        $installer = new MagicExtraField\Installer();
+        $installer = new MagicExtraFieldLight\Installer();
 
         $installer->run();
     }
@@ -103,15 +102,16 @@ final class Magic_Extra_Field
      */
     public function init_plugin()
     {
-        new MagicExtraField\Assets();
-        new MagicExtraField\MagicExtraFieldAjax();
-        new MagicExtraField\LoadElementor();
-        new MagicExtraField\Generator();
-        new MagicExtraField\WooCommerce_Filter();
+        new MagicExtraFieldLight\Assets();
+        new MagicExtraFieldLight\MagicExtraFieldAjax();
+        new MagicExtraFieldLight\LoadElementor();
+        new MagicExtraFieldLight\Generator();
+        new MagicExtraFieldLight\WooCommerce_Filter();
         if (is_admin()) {
-            new MagicExtraField\Admin();
+            new MagicExtraFieldLight\Admin();
         } 
     }
+
     /**
      * Declare compatibility with WooCommerce HPOS (High Performance Order Storage)
      * This method ensures our plugin works with WooCommerce Custom Order Tables
@@ -130,13 +130,13 @@ final class Magic_Extra_Field
 /**
  * Initialize main plugin
  *
- * @return \Magic_Extra_Field
+ * @return \Magic_Extra_Field_Light
  */
-if ( ! function_exists( 'magic_extra_field' ) ) {
-    function magic_extra_field()
+if ( ! function_exists( 'magic_extra_field_light' ) ) {
+    function magic_extra_field_light()
     {
-        return Magic_Extra_Field::init();
+        return Magic_Extra_Field_Light::init();
     }
 }
 
-magic_extra_field();
+magic_extra_field_light();

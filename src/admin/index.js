@@ -1,9 +1,11 @@
 import $ from 'jquery';
 jQuery(function($) {
-    // Initialize Choices.js for display type select
+    // Initialize Select2 for display type select
     $('#display_type').select2({
         minimumResultsForSearch: Infinity
     });
+
+    // Handle taxonomy selection and term loading
     $('#selected_taxonomy').select2({}).on('change', function() {
         const selectedTaxonomy = $(this).val();
         
@@ -16,7 +18,6 @@ jQuery(function($) {
                 nonce: magic_ef_vars.nonce
             },
             beforeSend: function() {
-                // Show loading spinner before sending request
                 const $termsSelect = $('.magic-ef-term-select');
                 $termsSelect.empty().prop('disabled', true);
                 $('#terms_selection').hide();
@@ -25,78 +26,60 @@ jQuery(function($) {
                 $('#taxonomy_options').append($loader);
             },
             success: function(response) {
-                if(response.success) {
+                if(response.success && response.data?.length > 0) {
                     const $termsSelect = $('.magic-ef-term-select');
-                    
-                    if (response.data && response.data.length > 0) {
-                        response.data.forEach(function(term) {
-                            $termsSelect.append(new Option(term.name, term.term_id));
-                        });
-                    }
-                    
+                    response.data.forEach(term => {
+                        $termsSelect.append(new Option(term.name, term.term_id));
+                    });
                     $('#terms_selection').show();
                 }
             },
             complete: function() {
-                // Remove loader and re-enable select
                 $('.magic-ef-loader').remove();
                 $('.magic-ef-term-select').prop('disabled', false);
             }
         });
     });
-    $('#selected_products').select2({
-    });
-    $('.magic-ef-product-select').select2({});
-    $('.magic-ef-term-select').select2({
-    });
+
+    // Initialize other Select2 instances
+    $('#selected_products, .magic-ef-product-select, .magic-ef-term-select').select2();
+
+    // Handle display options toggle
     $('.magic-ef-toggle input[type="checkbox"]').on('change', function() {
         const isActive = $(this).is(':checked');
-        $('.magic-ef-display-options').toggleClass('active', isActive);
-        $('.magic-ef-display-options').css('display', isActive ? 'block' : 'none');
+        $('.magic-ef-display-options')
+            .toggleClass('active', isActive)
+            .toggle(isActive);
     });
+
+    // Handle display type changes
+    const handleDisplayType = (selectedValue) => {
+        $('#specific_products').toggle(selectedValue === 'specific');
+        $('#taxonomy_options').toggle(selectedValue === 'taxonomy');
+    };
+
     $('#display_type').on('change', function() {
-        const selectedValue = $(this).val();
-        if (selectedValue === 'specific') {
-            $('#specific_products').show();
-            $('#taxonomy_options').hide();
-        } else if (selectedValue === 'taxonomy') {
-            $('#taxonomy_options').show();
-            $('#specific_products').hide();
-        } else if (selectedValue === 'all') {
-            $('#specific_products').hide();
-            $('#taxonomy_options').hide();
-        }
+        handleDisplayType($(this).val());
     });
-    let displayType = $('#display_type').val();
-    if (displayType === 'specific') {
-        $('#specific_products').show();
-        $('#taxonomy_options').hide();
-    } else if (displayType === 'taxonomy') {
-        $('#taxonomy_options').show();
-        $('#specific_products').hide();
-    }
-    
-    $('.page-title-action').on('click', function(event) {
+
+    // Initial display type handling
+    handleDisplayType($('#display_type').val());
+
+    // Popup handling
+    const togglePopup = (show) => {
+        $('.popup').toggleClass('show', show);
+    };
+
+    $('.page-title-action, .magic-ef-settings-btn').on('click', function(event) {
         event.preventDefault();
-        $('.popup').addClass('show');
+        togglePopup(true);
     });
-      // show settings popup
-      $('.magic-ef-settings-btn').on('click', function(event) {
-        console.log('clicked');
-        $('.popup').addClass('show');
-    });
-    console.log('clicked');
-    
-    
-    $('.close').on('click', function() {
-        $('.popup').removeClass('show');
-    });
-    
+
+    $('.close').on('click', () => togglePopup(false));
+
     $(window).on('click', function(event) {
         if ($(event.target).is('.popup')) {
-            $('.popup').removeClass('show');
+            togglePopup(false);
         }
     });
-  
-    
 });

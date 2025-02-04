@@ -1,6 +1,6 @@
 <?php
 
-namespace MagicExtraField;
+namespace MagicExtraFieldLight;
 
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
@@ -57,7 +57,7 @@ class WooCommerce_Filter {
             if ($field['required'] === 'yes' && empty($_POST[$field['name']])) {
                 wc_add_notice(sprintf(
                     /* translators: %s: field name */
-                    esc_html__('Please enter %s before adding to cart.', 'magic-extra-field'),
+                    esc_html__('Please enter %s before adding to cart.', 'magic-extra-field-light'),
                     $field['name']
                 ), 'error');
                 return false;
@@ -185,7 +185,7 @@ class WooCommerce_Filter {
             }
         }
 
-        return apply_filters( 'magic_extra_field_data', $result, $product_id );
+        return apply_filters( 'magic_extra_field_light_data', $result, $product_id );
     }
 
     /**

@@ -1,6 +1,11 @@
 <?php
 
-namespace MagicExtraField\Traits;
+namespace MagicExtraFieldLight\Traits;
+
+// Exit if accessed directly
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 /**
  * Fields Trait
@@ -25,8 +30,11 @@ trait Fields
     ];
     $args = wp_parse_args( $args, $default_args );
     ob_start();
-      
-      $include_file = MAGIC_EXTRA_FIELD_DIR_PATH . 'includes/Traits/template/type-' . $args['type'] . '.php';
+      $include_file = apply_filters(
+          'magic_extra_field_light_template_path',
+          MAGIC_EXTRA_FIELD_DIR_PATH . 'includes/Traits/template/type-' . $args['type'] . '.php',
+          $args['type']
+      );
       if (file_exists($include_file)) {
         include $include_file;
       }

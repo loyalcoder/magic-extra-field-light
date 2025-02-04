@@ -1,59 +1,45 @@
 <?php
 
-namespace MagicExtraField;
+namespace MagicExtraFieldLight;
 
+/**
+ * Installer class handles plugin installation and version management
+ * 
+ * @package MagicExtraFieldLight
+ * @since 1.0.0
+ */
 class Installer
 {
     /**
      * Initialize class functions
+     * 
+     * Runs required installation and upgrade routines
      *
+     * @since 1.0.0
      * @return void
      */
     public function run()
     {
         $this->add_version();
-        $this->create_tables();
     }
 
     /**
-     * Store plugin information
+     * Store plugin installation and version information
+     * 
+     * Stores the initial installation timestamp if not already set
+     * Updates the plugin version number in options table
      *
+     * @since 1.0.0
      * @return void
      */
     public function add_version()
     {
-        $installed = get_option('magic_extra_field_installed');
+        $installed = get_option('magic_extra_field_light_installed');
 
         if (!$installed) {
-            update_option('magic_extra_field_installed', time());
+            update_option('magic_extra_field_light_installed', time());
         }
 
-        update_option('magic_extra_field_version', MAGIC_EXTRA_FIELD_VERSION);
-    }
-
-    /**
-     * Create custom tables
-     *
-     * @return void
-     */
-    public function create_tables()
-    {
-        global $wpdb;
-
-        $charset_collate = $wpdb->get_charset_collate();
-
-        $schema = "CREATE TABLE IF NOT EXISTS `{$wpdb->prefix}magic_extra_field` (
-            `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-            `name` varchar(250) DEFAULT NULL,
-            `value` varchar(250) DEFAULT NULL,
-            `created_at` datetime NOT NULL,
-            PRIMARY KEY (`id`)
-          ) $charset_collate";
-
-        if (!function_exists('dbDelta')) {
-            require_once ABSPATH . 'wp-admin/includes/upgrade.php';
-        }
-
-        dbDelta($schema);
+        update_option('magic_extra_field_light_version', MAGIC_EXTRA_FIELD_LIGHT_VERSION);
     }
 }

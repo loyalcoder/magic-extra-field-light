@@ -1,7 +1,7 @@
 {
-  "name": "loyalcoder/magic-extra-field",
-  "description": "Add extra fields to WordPress",
-  "type": "wordpress-plugin", 
+  "name": "loyalcoder/magic-extra-field-light",
+  "description": "A lightweight WordPress plugin that adds extra custom fields to WooCommerce products",
+  "type": "wordpress-plugin",
   "license": "GPL-2.0-or-later",
   "authors": [
     {
@@ -10,15 +10,18 @@
     }
   ],
   "minimum-stability": "dev",
+  "require": {
+    "php": ">=7.4"
+  },
   "autoload": {
     "classmap": [
       "includes"
     ],
     "psr-4": {
-      "MagicExtraField\\": "includes/"
+      "MagicExtraFieldLight\\": "includes/"
     },
     "files": [
-      "includes/functions.php"    
+      "includes/functions.php"
     ]
   }
 }
