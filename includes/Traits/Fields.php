@@ -59,6 +59,10 @@ trait Fields
         MAGIC_EXTRA_FIELD_LIGHT_PATH . '/includes/Traits/template/type-' . $args['type'] . '.php',
         $args['type']
     );
+    if (file_exists($include_file)) {
+        include $include_file;
+    }
+    return ob_get_clean();
    }
    public function attr_generate( $args = [] )
    {
