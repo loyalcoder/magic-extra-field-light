@@ -15,7 +15,7 @@
   \**********************/
 /***/ (() => {
 
-eval("\n\n//# sourceURL=webpack://magic-extra-field/./src/index.js?");
+eval("\n\n//# sourceURL=webpack://magic-extra-field-light/./src/index.js?");
 
 /***/ })
 
