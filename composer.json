@@ -1,0 +1,24 @@
+{
+  "name": "loyalcoder/magic-extra-field",
+  "description": "Add extra fields to WordPress",
+  "type": "wordpress-plugin", 
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "Loyalcoder",
+      "email": "info@loyalcoder.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "autoload": {
+    "classmap": [
+      "includes"
+    ],
+    "psr-4": {
+      "MagicExtraField\\": "includes/"
+    },
+    "files": [
+      "includes/functions.php"    
+    ]
+  }
+}
