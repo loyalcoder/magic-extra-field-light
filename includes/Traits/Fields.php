@@ -32,7 +32,7 @@ trait Fields
     ob_start();
       $include_file = apply_filters(
           'magic_extra_field_light_template_path',
-          MAGIC_EXTRA_FIELD_DIR_PATH . 'includes/Traits/template/type-' . $args['type'] . '.php',
+          MAGIC_EXTRA_FIELD_LIGHT_PATH . '/includes/Traits/template/type-' . $args['type'] . '.php',
           $args['type']
       );
       if (file_exists($include_file)) {
@@ -53,12 +53,12 @@ trait Fields
         'class' => '',
     ];
     $args = wp_parse_args( $args, $default_args );
-    $html = '<div class="magic-extra-field-field">';
-    $html .= '<div class="magic-extra-field-field-label">';
-    $html .= '<label for="' . esc_attr($args['name']) . '">' . esc_html($args['label']) . '</label>';
-    $html .= '</div>';
-    $html .= '<div class="magic-extra-field-field-input">';
-    $html .= '</div>';
+    ob_start();
+    $include_file = apply_filters(
+        'magic_extra_field_light_template_path',
+        MAGIC_EXTRA_FIELD_LIGHT_PATH . '/includes/Traits/template/type-' . $args['type'] . '.php',
+        $args['type']
+    );
    }
    public function attr_generate( $args = [] )
    {

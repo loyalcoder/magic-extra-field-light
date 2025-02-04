@@ -103,7 +103,7 @@ final class Magic_Extra_Field_Light
     public function init_plugin()
     {
         new MagicExtraFieldLight\Assets();
-        new MagicExtraFieldLight\MagicExtraFieldAjax();
+        new MagicExtraFieldLight\Ajax();
         new MagicExtraFieldLight\LoadElementor();
         new MagicExtraFieldLight\Generator();
         new MagicExtraFieldLight\WooCommerce_Filter();

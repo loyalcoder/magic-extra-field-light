@@ -1,6 +1,6 @@
 <?php
 
-namespace MagicExtraField;
+namespace MagicExtraFieldLight;
 
 use Elementor\Plugin;
 
@@ -37,7 +37,7 @@ class LoadElementor
 
         foreach ($scripts as $handle => $script) {
             $deps    = isset($script['deps']) ? $script['deps'] : false;
-            $version = isset($script['version']) ? $script['version'] : MAGIC_EXTRA_FIELD_VERSION;
+            $version = isset($script['version']) ? $script['version'] : MAGIC_EXTRA_FIELD_LIGHT_VERSION;
             wp_register_script($handle, $script['src'], $deps, $version, true);
             wp_enqueue_script($handle);
         }
@@ -97,7 +97,7 @@ class LoadElementor
     {
         return [
             'magic-extra-field' => [
-                'src'     => MAGIC_EXTRA_FIELD_ASSETS . '/js/magic-extra-field.js',
+                'src'     => MAGIC_EXTRA_FIELD_LIGHT_ASSETS . '/js/magic-extra-field.js',
                 // 'version' => filemtime(MAGIC_EXTRA_FIELD_PATH . '/assets/js/magic-extra-field.js'),
                 'deps'    => ['jquery']
             ],
@@ -114,7 +114,7 @@ class LoadElementor
     {
         return [
             'magic-extra-field' => [
-                'src'     => MAGIC_EXTRA_FIELD_ASSETS . '/css/magic-extra-field.css',
+                'src'     => MAGIC_EXTRA_FIELD_LIGHT_ASSETS . '/css/magic-extra-field.css',
                 // 'version' => filemtime(MAGIC_EXTRA_FIELD_PATH . '/assets/css/magic-extra-field.css'),
             ]
         ];
@@ -150,7 +150,7 @@ class LoadElementor
         }
 
         foreach ($widget_list as $handle => $widget) {
-            $file = MAGIC_EXTRA_FIELD_ELEMENTOR . $widget . '.php';
+            $file = MAGIC_EXTRA_FIELD_LIGHT_ELEMENTOR . $widget . '.php';
             if (!file_exists($file)) {
                 continue;
             }
@@ -159,14 +159,14 @@ class LoadElementor
 
         foreach ($scripts as $handle => $script) {
             $deps    = isset($script['deps']) ? $script['deps'] : false;
-            $version = isset($script['version']) ? $script['version'] : MAGIC_EXTRA_FIELD_VERSION;
+            $version = isset($script['version']) ? $script['version'] : MAGIC_EXTRA_FIELD_LIGHT_VERSION;
             //wp_register_script($handle, $script['src'], $deps, $version, true);
             // wp_enqueue_script($handle);
         }
 
         foreach ($styles as $handle => $style) {
             $deps = isset($style['deps']) ? $style['deps'] : false;
-            $version = isset($style['version']) ? $style['version'] : MAGIC_EXTRA_FIELD_VERSION;
+            $version = isset($style['version']) ? $style['version'] : MAGIC_EXTRA_FIELD_LIGHT_VERSION;
            // wp_register_style($handle, $style['src'], $deps, $version);
             // wp_enqueue_style($handle);
         }
