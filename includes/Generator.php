@@ -13,12 +13,10 @@ if (!defined('ABSPATH')) {
  * 
  * @api https://github.com/johnbillion/extended-cpts
  */
+use MagicExtraFieldLight\Traits\Product_Data;
 class Generator
 {
-    /**
-     * Transient key for products cache
-     */
-    const PRODUCTS_CACHE_KEY = 'magic_ef_products_cache';
+    use Product_Data;
 
     /**
      * Class initialize
@@ -33,37 +31,6 @@ class Generator
         add_action('save_post_product', [$this, 'clear_products_cache']);
         add_action('deleted_post', [$this, 'clear_products_cache']);
         add_action('woocommerce_update_product', [$this, 'clear_products_cache']);
-    }
-
-    /**
-     * Clear products transient cache
-     */
-    public function clear_products_cache() {
-        delete_transient(self::PRODUCTS_CACHE_KEY);
-    }
-
-    /**
-     * Get cached products or query if cache is empty
-     */
-    private function get_cached_products() {
-        $products = get_transient(self::PRODUCTS_CACHE_KEY);
-        
-        if (false === $products) {
-            $args = array(
-                'post_type'      => 'product',
-                'posts_per_page' => -1,
-                'orderby'        => 'title',
-                'order'          => 'ASC',
-                'post_status'    => 'publish'
-            );
-            
-            $products = wc_get_products($args);
-            
-            // Cache for 12 hours
-            set_transient(self::PRODUCTS_CACHE_KEY, $products, 12 * HOUR_IN_SECONDS);
-        }
-
-        return $products;
     }
 
     /**
