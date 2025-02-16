@@ -75,6 +75,7 @@ class LoadElementor
         $this->include_widgets_files();
 
         Plugin::instance()->widgets_manager->register(new Elementor\Input_Text());
+        Plugin::instance()->widgets_manager->register(new Elementor\Input_Number());
     }
 
     /**
