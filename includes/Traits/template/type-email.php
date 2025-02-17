@@ -30,7 +30,6 @@ if ( ! defined( 'ABSPATH' ) ) {
         <label for="<?php echo esc_attr($args['id']); ?>"><?php echo esc_html($args['label']); ?></label>
     <?php endif; ?>
     <div class="magic-extra-field-field-input">
-        <input <?php echo wp_kses_data($this->attr_generate($args)); ?> value="<?php echo isset($args['value']) ? esc_attr($args['value']) : ''; ?>"  min="<?php echo isset($args['min']) ? esc_attr($args['min']) : '0'; ?>"
-/>
+        <input <?php echo wp_kses_data($this->attr_generate($args)); ?> />
     </div>
 </div>

@@ -17,7 +17,7 @@ use MagicExtraFieldLight\Traits\Fields;
  *
  * @since 1.0.0
  */
-class Input_Number extends \Elementor\Widget_Base {
+class Input_Email extends \Elementor\Widget_Base {
     use Fields;
     /**
      * Get widget name.
@@ -29,7 +29,7 @@ class Input_Number extends \Elementor\Widget_Base {
      * @return string Widget name.
      */
     public function get_name() {
-        return 'magic_input_number';
+        return 'magic_input_email';
     }
 
     /**
@@ -42,7 +42,7 @@ class Input_Number extends \Elementor\Widget_Base {
      * @return string Widget title.
      */
     public function get_title() {
-        return esc_html__('Magic Input Number', 'magic-extra-field-light');
+        return esc_html__('Magic Input Email', 'magic-extra-field-light');
     }
 
     /**
@@ -91,19 +91,19 @@ class Input_Number extends \Elementor\Widget_Base {
         );
 
         // Allow filtering of content controls before adding defaults
-        $content_controls = apply_filters('magic_extra_field_light_input_number_content_controls_before', array());
+        $content_controls = apply_filters('magic_extra_field_light_input_text_content_controls_before', array());
 
         // Add default content controls
         $default_content_controls = [
             'field_label' => [
                 'label' => esc_html__('Field Label', 'magic-extra-field-light'),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => esc_html__('Number Field', 'magic-extra-field-light'),
+                'default' => esc_html__('Email Field', 'magic-extra-field-light'),
             ],
             'placeholder' => [
                 'label' => esc_html__('Placeholder', 'magic-extra-field-light'),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => esc_html__('Enter number here', 'magic-extra-field-light'),
+                'default' => esc_html__('Enter email here', 'magic-extra-field-light'),
             ],
             'required' => [
                 'label' => esc_html__('Required', 'magic-extra-field-light'),
@@ -115,32 +115,13 @@ class Input_Number extends \Elementor\Widget_Base {
             'field_name' => [
                 'label' => esc_html__('Name', 'magic-extra-field-light'),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => esc_html__('input-number-' . $this->get_id(), 'magic-extra-field-light'),
-            ],
-            'min_value' => [ // Add min_value control
-                'label' => esc_html__('Minimum Value', 'magic-extra-field-light'),
-                'type' => \Elementor\Controls_Manager::NUMBER,
-                'default' => 2,
-                'min'     => 1,
-                'max'     => 1000,
-            ],
-            'max_value' => [ // Add max_value control
-                'label' => esc_html__('Maximum Value', 'magic-extra-field-light'),
-                'type' => \Elementor\Controls_Manager::NUMBER,
-                'default' => 500,
-                'min'     => 1,
-                'max'     => 1000,
-            ],
-            'default_value' => [ // Add max_value control
-                'label' => esc_html__('Default Value', 'magic-extra-field-light'),
-                'type' => \Elementor\Controls_Manager::NUMBER,
-                'default' => '',
-            ],
+                'default' => esc_html__('input-email-' . $this->get_id(), 'magic-extra-field-light'),
+            ]
         ];
 
         // Merge and filter all content controls
         $content_controls = array_merge($content_controls, $default_content_controls);
-        $content_controls = apply_filters('magic_extra_field_light_input_number_content_controls_after', $content_controls);
+        $content_controls = apply_filters('magic_extra_field_light_input_email_content_controls_after', $content_controls);
 
         // Add all content controls
         foreach ($content_controls as $control_id => $control_args) {
@@ -159,7 +140,7 @@ class Input_Number extends \Elementor\Widget_Base {
         );
 
         // Allow filtering of style controls before adding defaults
-        $style_controls = apply_filters('magic_extra_field_light_input_number_style_controls_before', array());
+        $style_controls = apply_filters('magic_extra_field_light_input_email_style_controls_before', array());
 
         // Add default style controls
         $default_style_controls = [
@@ -167,20 +148,27 @@ class Input_Number extends \Elementor\Widget_Base {
                 'group_control' => true,
                 'type' => \Elementor\Group_Control_Typography::get_type(),
                 'name' => 'input_typography',
-                'selector' => '{{WRAPPER}} .magic-input-email',
+                'selector' => '{{WRAPPER}} .magic-input-text',
             ],
             'input_text_color' => [
                 'label' => esc_html__('Text Color', 'magic-extra-field-light'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .magic-input-email' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .magic-input-text' => 'color: {{VALUE}};',
+                ],
+            ],
+            'input_background_color' => [
+                'label' => esc_html__('Background Color', 'magic-extra-field-light'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .magic-input-email' => 'background-color: {{VALUE}};',
                 ],
             ]
         ];
 
         // Merge and filter all style controls
         $style_controls = array_merge($style_controls, $default_style_controls);
-        $style_controls = apply_filters('magic_extra_field_light_input_number_style_controls_after', $style_controls);
+        $style_controls = apply_filters('magic_extra_field_light_input_email_style_controls_after', $style_controls);
 
         // Add all style controls
         foreach ($style_controls as $control_id => $control_args) {
@@ -207,19 +195,13 @@ class Input_Number extends \Elementor\Widget_Base {
         $settings = $this->get_settings_for_display();
         $required = $settings['required'] === 'yes' ? 'required' : '';
         $filed_args = [];
-        $filed_args['type'] = 'number';
+        $filed_args['type'] = 'email';
         $filed_args['label'] = $settings['field_label'];
         $filed_args['placeholder'] = $settings['placeholder'];
         $filed_args['required'] = $required;
-        $filed_args['id'] = 'magic-input-number-' . $this->get_id();
-        $filed_args['class'] = 'magic-input-number';
+        $filed_args['id'] = 'magic-input-email-' . $this->get_id();
+        $filed_args['class'] = 'magic-input-email';
         $filed_args['name'] = $settings['field_name'];
-        $filed_args['min'] = $settings['min_value'];
-        $filed_args['max'] = $settings['max_value'];
-        if (!empty($settings['default_value'])) {
-            $filed_args['default'] = '"'.$settings['default_value'].'"';
-        }
-
         echo wp_kses(
             $this->general_field( $filed_args ),
             array(
@@ -231,9 +213,6 @@ class Input_Number extends \Elementor\Widget_Base {
                     'value' => array(),
                     'placeholder' => array(),
                     'required' => array(),
-                    'min' => array(), // Add min
-                    'max' => array(), // Add max
-                    'default' => array(), // Add default
                     'style' => array()
                 ),
                 'label' => array(
