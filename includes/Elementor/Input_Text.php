@@ -8,6 +8,9 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 use Elementor\Widget_Base;
 use MagicExtraFieldLight\Traits\Fields;
+use Elementor\Group_Control_Background;
+use Elementor\Group_Control_Border;
+use Elementor\Group_Control_Box_Shadow;
 
 /**
  * Input_Text Widget
@@ -29,7 +32,7 @@ class Input_Text extends \Elementor\Widget_Base {
      * @return string Widget name.
      */
     public function get_name() {
-        return 'magic_input_text';
+        return 'magic_input_text_light';
     }
 
     /**
@@ -69,6 +72,9 @@ class Input_Text extends \Elementor\Widget_Base {
      */
     public function get_categories() {
         return ['magic-extra-field-light'];
+    }
+    public function get_style_depends() {
+        return ['magic-extra-field-light-style'];
     }
 
     /**
@@ -130,47 +136,183 @@ class Input_Text extends \Elementor\Widget_Base {
 
         $this->end_controls_section();
 
-        // Style Section
+        // Label Style Section
         $this->start_controls_section(
-            'style_section',
+            'label_style_section',
             [
-                'label' => esc_html__('Style', 'magic-extra-field-light'),
+                'label' => esc_html__('Label Style', 'magic-extra-field-light'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
 
-        // Allow filtering of style controls before adding defaults
-        $style_controls = apply_filters('magic_extra_field_light_input_text_style_controls_before', array());
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name' => 'label_typography',
+                'selector' => '{{WRAPPER}} .magic-extra-field-field label',
+            ]
+        );
 
-        // Add default style controls
-        $default_style_controls = [
-            'input_typography' => [
-                'group_control' => true,
-                'type' => \Elementor\Group_Control_Typography::get_type(),
+        $this->add_control(
+            'label_color',
+            [
+                'label' => esc_html__('Label Color', 'magic-extra-field-light'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .magic-extra-field-field label' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'label_margin',
+            [
+                'label' => esc_html__('Margin', 'magic-extra-field-light'),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .magic-extra-field-field label' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // Input Style Section
+        $this->start_controls_section(
+            'input_style_section',
+            [
+                'label' => esc_html__('Input Style', 'magic-extra-field-light'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
                 'name' => 'input_typography',
                 'selector' => '{{WRAPPER}} .magic-input-text',
-            ],
-            'input_text_color' => [
+            ]
+        );
+
+        $this->add_control(
+            'input_color',
+            [
                 'label' => esc_html__('Text Color', 'magic-extra-field-light'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .magic-input-text' => 'color: {{VALUE}};',
                 ],
             ]
-        ];
+        );
 
-        // Merge and filter all style controls
-        $style_controls = array_merge($style_controls, $default_style_controls);
-        $style_controls = apply_filters('magic_extra_field_light_input_text_style_controls_after', $style_controls);
+        $this->add_control(
+            'placeholder_color',
+            [
+                'label' => esc_html__('Placeholder Color', 'magic-extra-field-light'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .magic-input-text::placeholder' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .magic-input-text::-webkit-input-placeholder' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .magic-input-text::-moz-placeholder' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .magic-input-text:-ms-input-placeholder' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
 
-        // Add all style controls
-        foreach ($style_controls as $control_id => $control_args) {
-            if (!empty($control_args['group_control'])) {
-                $this->add_group_control($control_args['type'], $control_args);
-            } else {
-                $this->add_control($control_id, $control_args);
-            }
-        }
+        $this->add_group_control(
+            \Elementor\Group_Control_Background::get_type(),
+            [
+                'name' => 'input_background',
+                'label' => esc_html__('Background', 'magic-extra-field-light'),
+                'types' => ['classic', 'gradient'],
+                'selector' => '{{WRAPPER}} .magic-input-text',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'input_padding',
+            [
+                'label' => esc_html__('Padding', 'magic-extra-field-light'),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .magic-input-text' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'input_margin',
+            [
+                'label' => esc_html__('Margin', 'magic-extra-field-light'),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .magic-input-text' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->start_controls_tabs('input_border_tabs');
+
+        // Normal Tab
+        $this->start_controls_tab(
+            'input_border_normal_tab',
+            [
+                'label' => esc_html__('Normal', 'magic-extra-field-light'),
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
+            [
+                'name' => 'input_border',
+                'label' => esc_html__('Border', 'magic-extra-field-light'),
+                'selector' => '{{WRAPPER}} .magic-input-text',
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'input_box_shadow',
+                'label' => esc_html__('Box Shadow', 'magic-extra-field-light'),
+                'selector' => '{{WRAPPER}} .magic-input-text',
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        // Focus Tab
+        $this->start_controls_tab(
+            'input_border_focus_tab',
+            [
+                'label' => esc_html__('Focus', 'magic-extra-field-light'),
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
+            [
+                'name' => 'input_border_focus',
+                'label' => esc_html__('Border', 'magic-extra-field-light'),
+                'selector' => '{{WRAPPER}} .magic-input-text:focus',
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'input_box_shadow_focus',
+                'label' => esc_html__('Box Shadow', 'magic-extra-field-light'),
+                'selector' => '{{WRAPPER}} .magic-input-text:focus',
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->end_controls_tabs();
 
         $this->end_controls_section();
     }
@@ -189,11 +331,11 @@ class Input_Text extends \Elementor\Widget_Base {
         $required = $settings['required'] === 'yes' ? 'required' : '';
         $filed_args = [];
         $filed_args['type'] = 'text';
-        $filed_args['label'] = $settings['field_label'];
+        $filed_args['label'] = $settings['field_label']; 
         $filed_args['placeholder'] = $settings['placeholder'];
         $filed_args['required'] = $required;
         $filed_args['id'] = 'magic-input-text-' . $this->get_id();
-        $filed_args['class'] = 'magic-input-text';
+        $filed_args['class'] = 'magic-input-text magic-input';
         $filed_args['name'] = $settings['field_name'];
         echo wp_kses(
             $this->general_field( $filed_args ),

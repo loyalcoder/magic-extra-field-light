@@ -46,8 +46,8 @@ class Assets
     {
         return [
             'magic-extra-field-light-style' => [
-                'src'     => MAGIC_EXTRA_FIELD_LIGHT_ASSETS . '/css/frontend.css',
-                'version' => filemtime(MAGIC_EXTRA_FIELD_LIGHT_PATH . '/assets/css/frontend.css'),
+                'src'     => MAGIC_EXTRA_FIELD_LIGHT_ASSETS . '/dist/style.css',
+                'version' => filemtime(MAGIC_EXTRA_FIELD_LIGHT_PATH . '/assets/dist/style.css'),
             ]
         ];
     }

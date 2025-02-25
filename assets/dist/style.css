@@ -1,4 +1,45 @@
 /*!********************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/scss/style.scss ***!
   \********************************************************************************************************************************************************/
+.magic-extra-field-light-d-block {
+  display: block;
+}
 
+.magic-extra-field-light-d-inline {
+  display: inline;
+}
+
+/*input type text style */
+.magic-input,
+.magic-input-text {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.magic-input:focus,
+.magic-input-text:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+.magic-input::placeholder,
+.magic-input-text::placeholder {
+  color: #6c757d;
+  opacity: 1;
+}
+.magic-input:disabled,
+.magic-input-text:disabled {
+  background-color: #e9ecef;
+  opacity: 1;
+}

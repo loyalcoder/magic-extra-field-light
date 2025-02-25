@@ -27,7 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <div class="magic-extra-field-field">
     <?php if ( ! empty( $args['label'] ) ) : ?>
-        <label for="<?php echo esc_attr($args['id']); ?>"><?php echo esc_html($args['label']); ?></label>
+        <label for="<?php echo esc_attr($args['id']); ?>" class="magic-extra-field-light-d-block"><?php echo esc_html($args['label']); ?></label>
     <?php endif; ?>
     <div class="magic-extra-field-field-input">
         <input <?php echo wp_kses_data($this->attr_generate($args)); ?> />
