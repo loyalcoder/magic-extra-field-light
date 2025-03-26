@@ -54,7 +54,7 @@ class LoadElementor
     public function register_category($elementor)
     {
         $elementor->add_category(
-            'magic-extra-field-widgets',
+            'magic-extra-field-light',
             [
                 'title' =>  esc_html__('Magic Extra Field Widgets', 'magic-extra-field'),
                 'icon'  => 'eicon-font',
@@ -75,6 +75,7 @@ class LoadElementor
         $this->include_widgets_files();
 
         Plugin::instance()->widgets_manager->register(new Elementor\Input_Text());
+        Plugin::instance()->widgets_manager->register(new Elementor\Input_Number());
     }
 
     /**
