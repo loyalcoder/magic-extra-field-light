@@ -210,6 +210,28 @@ trait Fields
             'class' => [],
             'id' => [],
             'style' => []
+        ],
+        'radio' => [
+            'name' => [],
+            'id' => [],
+            'class' => [],
+            'value' => [],
+            'required' => [],
+            'style' => [],
+            'checked' => [],
+            'disabled' => [],
+            'form' => []
+        ],
+        'checkbox' => [
+            'name' => [],
+            'id' => [],
+            'class' => [],
+            'value' => [],
+            'required' => [],
+            'style' => [],
+            'checked' => [],
+            'disabled' => [],
+            'form' => []
         ]
     ];
    }
