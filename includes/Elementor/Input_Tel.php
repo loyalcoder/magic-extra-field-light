@@ -36,7 +36,7 @@ class Input_Tel extends \Elementor\Widget_Base {
     }
 
     public function get_categories() {
-        return ['general'];
+        return ['magic-extra-field-light'];
     }
 
     protected function register_controls() {
