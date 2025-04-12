@@ -117,6 +117,16 @@ trait Fields
             case 'pattern':
                 $attr .= ' pattern="' . esc_attr($value) . '"';
                 break;
+            case 'rows':
+                $attr .= ' rows="' . esc_attr($value) . '"';
+                break;
+            case 'cols':
+                $attr .= ' cols="' . esc_attr($value) . '"';
+                break;
+            case 'disabled':
+                $attr .= ' disabled="' . esc_attr($value) . '"';
+                break;
+                
         }
     }
     return $attr;   
@@ -135,13 +145,68 @@ trait Fields
             'style' => [],
             'min' => [],
             'max' => [],
-            'step' => []
+            'step' => [],
+            'checked' => [],
+            'disabled' => [],
+            'pattern' => [],
+            'autocomplete' => [],
+            'readonly' => []
+        ],
+        'textarea' => [
+            'name' => [],
+            'id' => [],
+            'class' => [],
+            'placeholder' => [],
+            'required' => [],
+            'style' => [],
+            'rows' => [],
+            'cols' => [],
+            'disabled' => [],
+            'readonly' => [],
+            'maxlength' => [],
+            'wrap' => []
+        ],
+        'select' => [
+            'name' => [],
+            'id' => [],
+            'class' => [],
+            'required' => [],
+            'style' => [],
+            'disabled' => [],
+            'multiple' => [],
+            'size' => [],
+            'form' => []
+        ],
+        'option' => [
+            'value' => [],
+            'selected' => [],
+            'disabled' => [],
+            'label' => []
+        ],
+        'optgroup' => [
+            'label' => [],
+            'disabled' => []
         ],
         'label' => [
             'for' => [],
-            'class' => []
+            'class' => [],
+            'form' => []
         ],
         'div' => [
+            'class' => [],
+            'id' => [],
+            'style' => [],
+            'role' => [],
+            'aria-label' => []
+        ],
+        'fieldset' => [
+            'class' => [],
+            'id' => [],
+            'style' => [],
+            'disabled' => [],
+            'form' => []
+        ],
+        'legend' => [
             'class' => [],
             'id' => [],
             'style' => []
