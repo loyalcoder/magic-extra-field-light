@@ -105,9 +105,47 @@ trait Fields
             case 'style':
                 $attr .= ' style="' . esc_attr($value) . '"';
                 break;
+            case 'min':
+                $attr .= ' min="' . esc_attr($value) . '"';
+                break;
+            case 'max':
+                $attr .= ' max="' . esc_attr($value) . '"';
+                break;
+            case 'step':
+                $attr .= ' step="' . esc_attr($value) . '"';
+                break;
+            case 'pattern':
+                $attr .= ' pattern="' . esc_attr($value) . '"';
+                break;
         }
     }
-
     return $attr;   
+   }
+   public function allowed_generate_filed_html( )
+   {
+    return [
+        'input' => [
+            'type' => [],
+            'name' => [],
+            'id' => [],
+            'class' => [],
+            'value' => [],
+            'placeholder' => [],
+            'required' => [],
+            'style' => [],
+            'min' => [],
+            'max' => [],
+            'step' => []
+        ],
+        'label' => [
+            'for' => [],
+            'class' => []
+        ],
+        'div' => [
+            'class' => [],
+            'id' => [],
+            'style' => []
+        ]
+    ];
    }
 }

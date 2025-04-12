@@ -38,7 +38,7 @@ final class Magic_Extra_Field_Light
     const version = '1.0.0';
 
     /**
-     * contractor
+     * Constructor
      */
     private function __construct()
     {
@@ -84,14 +84,13 @@ final class Magic_Extra_Field_Light
     }
 
     /**
-     * Plugin information
+     * Plugin activation
      *
      * @return void
      */
     public function activate()
     {
         $installer = new MagicExtraFieldLight\Installer();
-
         $installer->run();
     }
 
@@ -102,27 +101,63 @@ final class Magic_Extra_Field_Light
      */
     public function init_plugin()
     {
+        // Check if WooCommerce is active
+        if (!class_exists('WooCommerce')) {
+            add_action('admin_notices', [$this, 'woocommerce_missing_notice']);
+            return;
+        }
+
+        // Check if Elementor is active
+        if (!did_action('elementor/loaded')) {
+            add_action('admin_notices', [$this, 'elementor_missing_notice']);
+            return;
+        }
+
         new MagicExtraFieldLight\Assets();
         new MagicExtraFieldLight\Ajax();
         new MagicExtraFieldLight\LoadElementor();
         new MagicExtraFieldLight\Generator();
         new MagicExtraFieldLight\WooCommerce_Filter();
+        
         if (is_admin()) {
             new MagicExtraFieldLight\Admin();
-        } 
+        }
     }
 
     /**
-     * Declare compatibility with WooCommerce HPOS (High Performance Order Storage)
-     * This method ensures our plugin works with WooCommerce Custom Order Tables
+     * Display WooCommerce missing notice
+     */
+    public function woocommerce_missing_notice()
+    {
+        ?>
+        <div class="notice notice-error">
+            <p><?php esc_html_e('Magic Extra Field Light requires WooCommerce to be installed and activated.', 'magic-extra-field-light'); ?></p>
+        </div>
+        <?php
+    }
+
+    /**
+     * Display Elementor missing notice
+     */
+    public function elementor_missing_notice()
+    {
+        ?>
+        <div class="notice notice-error">
+            <p><?php esc_html_e('Magic Extra Field Light requires Elementor to be installed and activated.', 'magic-extra-field-light'); ?></p>
+        </div>
+        <?php
+    }
+
+    /**
+     * Declare compatibility with WooCommerce HPOS
      * 
-     * @since 1.0.0
      * @return void 
      */
     public function declare_compatibility()
     {
-        if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
-            \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
+        if (class_exists(\Automattic\WooCommerce\Utilities\FeaturesUtil::class)) {
+            \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility('custom_order_tables', __FILE__, true);
+            \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility('cart_checkout_blocks', __FILE__, true);
         }
     }
 }
@@ -132,7 +167,7 @@ final class Magic_Extra_Field_Light
  *
  * @return \Magic_Extra_Field_Light
  */
-if ( ! function_exists( 'magic_extra_field_light' ) ) {
+if (!function_exists('magic_extra_field_light')) {
     function magic_extra_field_light()
     {
         return Magic_Extra_Field_Light::init();

@@ -9,9 +9,7 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 use Elementor\Widget_Base;
 use MagicExtraFieldLight\Traits\Fields;
-use Elementor\Group_Control_Background;
-use Elementor\Group_Control_Border;
-use Elementor\Group_Control_Box_Shadow;
+use MagicExtraFieldLight\Traits\General_Style_Control;
 
 /**
  * Input_Number Widget
@@ -23,7 +21,7 @@ use Elementor\Group_Control_Box_Shadow;
  */
 class Input_Number extends \Elementor\Widget_Base {
     use Fields;
-
+    use General_Style_Control;
     /**
      * Get widget name.
      *
@@ -141,107 +139,8 @@ class Input_Number extends \Elementor\Widget_Base {
         $this->end_controls_section();
 
         // Style Section
-        $this->start_controls_section(
-            'style_section',
-            [
-                'label' => esc_html__('Style', 'magic-extra-field-light'),
-                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-        $this->add_control(
-            'label_heading',
-            [
-                'label' => esc_html__('Label', 'magic-extra-field-light'),
-                'type' => \Elementor\Controls_Manager::HEADING,
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name' => 'label_typography',
-                'selector' => '{{WRAPPER}} .magic-field-label',
-            ]
-        );
-
-        $this->add_control(
-            'label_color',
-            [
-                'label' => esc_html__('Color', 'magic-extra-field-light'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .magic-field-label' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'input_heading',
-            [
-                'label' => esc_html__('Input', 'magic-extra-field-light'),
-                'type' => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'before',
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name' => 'input_typography',
-                'selector' => '{{WRAPPER}} .magic-input-number',
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Background::get_type(),
-            [
-                'name' => 'input_background',
-                'selector' => '{{WRAPPER}} .magic-input-number',
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Border::get_type(),
-            [
-                'name' => 'input_border',
-                'selector' => '{{WRAPPER}} .magic-input-number',
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Box_Shadow::get_type(),
-            [
-                'name' => 'input_box_shadow',
-                'selector' => '{{WRAPPER}} .magic-input-number',
-            ]
-        );
-
-        $this->add_control(
-            'input_border_radius',
-            [
-                'label' => esc_html__('Border Radius', 'magic-extra-field-light'),
-                'type' => \Elementor\Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%'],
-                'selectors' => [
-                    '{{WRAPPER}} .magic-input-number' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'input_padding',
-            [
-                'label' => esc_html__('Padding', 'magic-extra-field-light'),
-                'type' => \Elementor\Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em', '%'],
-                'selectors' => [
-                    '{{WRAPPER}} .magic-input-number' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->end_controls_section();
+        $this->add_label_style_controls('{{WRAPPER}} .magic-extra-field-field label');
+        $this->add_input_style_controls('{{WRAPPER}} .magic-input-number');
     }
 
     /**
@@ -253,32 +152,22 @@ class Input_Number extends \Elementor\Widget_Base {
     protected function render() {
         $settings = $this->get_settings_for_display();
         
-        $field_id = 'magic_input_' . $this->get_id();
-        $required = $settings['required'] === 'yes' ? 'required' : '';
-        
-        ?>
-        <div class="magic-input-wrapper">
-            <?php if (!empty($settings['field_label'])) : ?>
-                <label class="magic-field-label" for="<?php echo esc_attr($field_id); ?>">
-                    <?php echo esc_html($settings['field_label']); ?>
-                    <?php if ($required) : ?>
-                        <span class="required">*</span>
-                    <?php endif; ?>
-                </label>
-            <?php endif; ?>
-            
-            <input 
-                type="number" 
-                id="<?php echo esc_attr($field_id); ?>"
-                class="magic-input-number"
-                name="<?php echo esc_attr($settings['field_name']); ?>"
-                placeholder="<?php echo esc_attr($settings['placeholder']); ?>"
-                min="<?php echo esc_attr($settings['min_value']); ?>"
-                max="<?php echo esc_attr($settings['max_value']); ?>"
-                step="<?php echo esc_attr($settings['step']); ?>"
-                <?php echo esc_attr($required); ?>
-            >
-        </div>
-        <?php
+        $field_id                  = 'magic_input_' . $this->get_id();
+        $required                  = $settings['required'] === 'yes' ? 'required' : '';
+        $filed_args                = [];
+        $filed_args['type']        = 'number';
+        $filed_args['label']       = $settings['field_label'];
+        $filed_args['placeholder'] = $settings['placeholder'];
+        $filed_args['required']    = $required;
+        $filed_args['id']          = 'magic-input-number-' . $this->get_id();
+        $filed_args['class']       = 'magic-input-number magic-input';
+        $filed_args['name']        = $settings['field_name'];
+        $filed_args['min']         = $settings['min_value'];
+        $filed_args['max']         = $settings['max_value'];
+        $filed_args['step']        = $settings['step'];
+        echo wp_kses(
+            $this->general_field( $filed_args ),
+            $this->allowed_generate_filed_html()
+        );
     }
 }
