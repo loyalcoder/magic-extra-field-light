@@ -81,6 +81,7 @@ class LoadElementor
         Plugin::instance()->widgets_manager->register(new Elementor\Input_Email());
         Plugin::instance()->widgets_manager->register(new Elementor\Input_Select());
         Plugin::instance()->widgets_manager->register(new Elementor\Input_Radio());
+        Plugin::instance()->widgets_manager->register(new Elementor\Input_Checkbox());
         Plugin::instance()->widgets_manager->register(new Elementor\Input_Textarea());
     }
 
