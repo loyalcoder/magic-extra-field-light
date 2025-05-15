@@ -1,6 +1,7 @@
 /*!********************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/scss/style.scss ***!
   \********************************************************************************************************************************************************/
+@charset "UTF-8";
 .magic-extra-field-light-d-block {
   display: block;
 }
@@ -42,4 +43,41 @@
 .magic-input-text:disabled {
   background-color: #e9ecef;
   opacity: 1;
+}
+
+.magic-extra-field-checkbox-wrapper.flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.magic-extra-field-field.checkbox .magic-extra-field-field-input {
+  display: flex;
+}
+
+.magic-checkbox {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.magic-checkbox:hover {
+  border-color: #007bff;
+}
+.magic-checkbox:checked {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+.magic-checkbox:checked::before {
+  content: "✔";
+  font-size: 12px;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

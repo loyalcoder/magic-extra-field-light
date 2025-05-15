@@ -136,7 +136,9 @@ class Input_Checkbox extends \Elementor\Widget_Base {
     protected function render() {
         $settings = $this->get_settings_for_display();
         $required = $settings['required'] === 'yes' ? 'required' : '';
-        
+        ?>
+        <div class="magic-extra-field-checkbox-wrapper flex">
+        <?php 
         foreach ($settings['checkbox_options'] as $index => $option) {
             $filed_args = [];
             $filed_args['type'] = 'checkbox';
@@ -145,14 +147,17 @@ class Input_Checkbox extends \Elementor\Widget_Base {
             $filed_args['checked'] = $option['is_checked'] === 'yes';
             $filed_args['required'] = $required;
             $filed_args['id'] = 'magic-checkbox-' . $this->get_id() . '-' . $index;
-            $filed_args['class'] = 'magic-checkbox magic-input';
+            $filed_args['class'] = 'magic-checkbox magic-checkbox';
             $filed_args['name'] = $settings['field_name'] . '[]';
             
             echo wp_kses(
-                $this->general_field($filed_args),
+                $this->checkbox_field($filed_args),
                 $this->allowed_generate_filed_html()
             );
         }
+        ?>
+        </div>
+        <?php
     }
 
     protected function content_template() {

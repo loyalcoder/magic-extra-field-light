@@ -44,7 +44,7 @@ class Input_Text extends \Elementor\Widget_Base {
      * @return string Widget title.
      */
     public function get_title() {
-        return esc_html__('Magic Input Text New', 'magic-extra-field-light');
+        return esc_html__('Magic Input Text', 'magic-extra-field-light');
     }
 
     /**
