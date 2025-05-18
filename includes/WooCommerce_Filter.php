@@ -79,7 +79,9 @@ class WooCommerce_Filter {
         
         foreach ($fields as $field) {
             if (!empty($_POST[$field['name']])) {
-                $custom_text = sanitize_text_field(wp_unslash($_POST[$field['name']]));
+                $custom_text = is_array($_POST[$field['name']]) 
+                    ? implode(',', array_map('sanitize_text_field', wp_unslash($_POST[$field['name']])))
+                    : sanitize_text_field(wp_unslash($_POST[$field['name']]));
                 $cart_item_data[$field['name']] = $custom_text;
             }
         }
@@ -92,7 +94,6 @@ class WooCommerce_Filter {
      */
     public function display_custom_text_in_cart($item_data, $cart_item) {
         $fields = $this->get_field_name_by_product_id($cart_item['product_id']);
-        
         foreach ($fields as $field) {
             if (!empty($cart_item[$field['name']])) {
                 $item_data[] = [

@@ -51,7 +51,14 @@ class Input_Checkbox extends \Elementor\Widget_Base {
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
-
+        $this->add_control(
+            'field_label',
+            [
+                'label' => esc_html__('Field Label', 'magic-extra-field-light'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => esc_html__('Checkbox Field', 'magic-extra-field-light'),
+            ]
+        );
         $repeater = new \Elementor\Repeater();
 
         $repeater->add_control(
@@ -204,6 +211,9 @@ class Input_Checkbox extends \Elementor\Widget_Base {
         $settings = $this->get_settings_for_display();
         $required = $settings['required'] === 'yes' ? 'required' : '';
         ?>
+        <div class="magic-extra-field-checkbox-label">
+            <?php echo esc_html($settings['field_label']); ?>
+        </div>
         <div class="magic-extra-field-checkbox-wrapper flex">
         <?php 
         foreach ($settings['checkbox_options'] as $index => $option) {
