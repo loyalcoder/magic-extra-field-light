@@ -199,5 +199,56 @@ trait General_Style_Control {
 
         $this->end_controls_section();
     }
+    /**
+     * Add checkbox style controls
+     *
+     * @param string $selector CSS selector for the checkbox
+     * @return void
+     */
+    protected function add_checkbox_style_controls($selector = '{{WRAPPER}} .magic-input-checkbox') {
+                // Style controls
+                $this->start_controls_section(
+                    'style_section',
+                    [
+                        'label' => esc_html__( 'Checkbox Style', 'magic-extra-field-light' ),
+                        'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+                    ]
+                );
+                $this->add_control(
+                    'checkbox_border_color',
+                    [
+                        'label' => esc_html__('Border Color', 'magic-extra-field-light'),
+                        'type' => \Elementor\Controls_Manager::COLOR,
+                        'selectors' => [
+                            $selector . ' + label:before' => 'border-color: {{VALUE}} !important;',
+                        ],
+                    ]
+                );
+                $this->add_control(
+                    'checkbox_checked_bg_color',
+                    [
+                        'label' => esc_html__('Checked Background Color', 'magic-extra-field-light'),
+                        'type' => \Elementor\Controls_Manager::COLOR,
+                        'selectors' => [
+                            $selector . ':checked + label:after' => 'background-color: {{VALUE}} !important;',
+                            $selector . ':checked + label:before' => 'border-color: {{VALUE}} !important;',
+                        ],
+                    ]
+                );
+
+                $this->add_control(
+                    'checkbox_checked_border_color',
+                    [
+                        'label' => esc_html__('Checked Border Color', 'magic-extra-field-light'),
+                        'type' => \Elementor\Controls_Manager::COLOR,
+                        'selectors' => [
+                            $selector . ':checked + label:after' => 'border-color: {{VALUE}} !important;',
+                        ],
+                    ]
+                );
+                
+                
+                $this->end_controls_section();
+    }
 }
 

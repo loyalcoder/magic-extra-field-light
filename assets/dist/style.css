@@ -1,7 +1,6 @@
 /*!********************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/scss/style.scss ***!
   \********************************************************************************************************************************************************/
-@charset "UTF-8";
 .magic-extra-field-light-d-block {
   display: block;
 }
@@ -55,29 +54,65 @@
   display: flex;
 }
 
-.magic-checkbox {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  border: 1px solid #ced4da;
-  border-radius: 0.25rem;
+.magic-extra-field-checkbox-wrapper {
+  display: flex;
+}
+.magic-extra-field-checkbox-wrapper .magic-extra-field-field .magic-extra-field-field-input {
   position: relative;
+}
+.magic-extra-field-checkbox-wrapper .magic-extra-field-field .magic-extra-field-field-input input[type=checkbox].magic-checkbox {
+  display: none;
+}
+.magic-extra-field-checkbox-wrapper .magic-extra-field-field .magic-extra-field-field-input input[type=checkbox].magic-checkbox:not(:checked) + label, .magic-extra-field-checkbox-wrapper .magic-extra-field-field .magic-extra-field-field-input input[type=checkbox].magic-checkbox:checked + label {
+  padding-left: 35px;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  display: inline-block;
+  height: 25px;
+  line-height: 25px;
+  overflow: hidden;
+  user-select: none;
 }
-.magic-checkbox:hover {
-  border-color: #007bff;
-}
-.magic-checkbox:checked {
-  background-color: #007bff;
-  border-color: #007bff;
-}
-.magic-checkbox:checked::before {
-  content: "✔";
-  font-size: 12px;
-  color: #fff;
+.magic-extra-field-checkbox-wrapper .magic-extra-field-field .magic-extra-field-field-input input[type=checkbox].magic-checkbox:not(:checked) + label:before, .magic-extra-field-checkbox-wrapper .magic-extra-field-field .magic-extra-field-field-input input[type=checkbox].magic-checkbox:not(:checked) + label:after, .magic-extra-field-checkbox-wrapper .magic-extra-field-field .magic-extra-field-field-input input[type=checkbox].magic-checkbox:checked + label:before, .magic-extra-field-checkbox-wrapper .magic-extra-field-field .magic-extra-field-field-input input[type=checkbox].magic-checkbox:checked + label:after {
+  content: "";
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  left: 0;
+  z-index: 1;
+  transition: 0.2s;
+  width: 19px;
+  height: 19px;
+  border: 1px solid red;
+  top: 3px;
+}
+.magic-extra-field-checkbox-wrapper .magic-extra-field-field .magic-extra-field-field-input input[type=checkbox].magic-checkbox:not(:checked) + label:after {
+  z-index: 0;
+}
+.magic-extra-field-checkbox-wrapper .magic-extra-field-field .magic-extra-field-field-input input[type=checkbox].magic-checkbox:checked + label:before {
+  content: "";
+  width: 10px;
+  height: 5px;
+  border: solid white;
+  border-width: 0 0 2px 2px;
+  transform: rotate(306deg);
+  left: 4px;
+  top: 8px;
+  z-index: 2;
+}
+.magic-extra-field-checkbox-wrapper .magic-extra-field-field .magic-extra-field-field-input input[type=checkbox].magic-checkbox:checked + label:after {
+  background-color: red;
+  z-index: 1;
+}
+.magic-extra-field-checkbox-wrapper .magic-extra-field-field .magic-extra-field-field-input input[type=checkbox].magic-checkbox:disabled:not(:checked) + label:before, .magic-extra-field-checkbox-wrapper .magic-extra-field-field .magic-extra-field-field-input input[type=checkbox].magic-checkbox:disabled:checked + label:before {
+  top: 3px;
+  box-shadow: none;
+  background-color: #444;
+  width: 19px;
+  height: 19px;
+  border: 3px solid #444;
+  transform: rotateZ(0deg);
+}
+.magic-extra-field-checkbox-wrapper .magic-extra-field-field .magic-extra-field-field-input input[type=checkbox].magic-checkbox:disabled + label {
+  color: #555;
+}
+.magic-extra-field-checkbox-wrapper .magic-extra-field-field .magic-extra-field-field-input input[type=checkbox].magic-checkbox:disabled:not(:checked) + label:hover:before {
+  border-color: red;
 }

@@ -127,9 +127,76 @@ class Input_Checkbox extends \Elementor\Widget_Base {
         );
 
         $this->end_controls_section();
+        $this->start_controls_section(
+            'checkbox_layout_section',
+            [
+                'label' => esc_html__('Checkbox Layout', 'magic-extra-field-light'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_control(
+            'checkbox_alignment',
+            [
+                'label' => esc_html__('Alignment', 'magic-extra-field-light'),
+                'type' => \Elementor\Controls_Manager::CHOOSE,
+                'options' => [
+                    'vertical' => [
+                        'title' => esc_html__('Vertical', 'magic-extra-field-light'),
+                        'icon' => 'eicon-v-align-stretch',
+                    ],
+                    'horizontal' => [
+                        'title' => esc_html__('Horizontal', 'magic-extra-field-light'),
+                        'icon' => 'eicon-h-align-stretch',
+                    ],
+                ],
+                'default' => 'vertical',
+                'selectors' => [
+                    '{{WRAPPER}} .magic-extra-field-checkbox-wrapper' => 'flex-direction: {{VALUE}};',
+                ],
+                'selectors_dictionary' => [
+                    'vertical' => 'column',
+                    'horizontal' => 'row',
+                ],
+            ]
+        );
+        $this->add_control(
+            'checkbox_gap',
+            [
+                'label' => esc_html__('Gap', 'magic-extra-field-light'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em', '%'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                        'step' => 1,
+                    ],
+                    'em' => [
+                        'min' => 0,
+                        'max' => 10,
+                        'step' => 0.1,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                        'step' => 1,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 10,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .magic-extra-field-checkbox-wrapper' => 'gap: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->end_controls_section();
 
         // Label Style Section
         $this->add_label_style_controls('{{WRAPPER}} .magic-extra-field-field label');
+        // checkbox style section
+        $this->add_checkbox_style_controls('{{WRAPPER}} .magic-checkbox');
 
     }
 
@@ -147,7 +214,7 @@ class Input_Checkbox extends \Elementor\Widget_Base {
             $filed_args['checked'] = $option['is_checked'] === 'yes';
             $filed_args['required'] = $required;
             $filed_args['id'] = 'magic-checkbox-' . $this->get_id() . '-' . $index;
-            $filed_args['class'] = 'magic-checkbox magic-checkbox';
+            $filed_args['class'] = 'magic-checkbox';
             $filed_args['name'] = $settings['field_name'] . '[]';
             
             echo wp_kses(

@@ -40,6 +40,7 @@
         opacity: 1;
     }
 }
+// checkbox layout
 .magic-extra-field-checkbox-wrapper {
     &.flex {
         display: flex;
@@ -55,35 +56,82 @@
         }
     }
 }
-
-.magic-checkbox {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    border: 1px solid #ced4da;
-    border-radius: 0.25rem;
-    position: relative;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-
-    &:hover {
-        border-color: #007bff;
-    }
-
-    &:checked {
-        background-color: #007bff;
-        border-color: #007bff;
-
-        &::before {
-            content: "\2714";
-            font-size: 12px;
-            color: #fff;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+.magic-extra-field-checkbox-wrapper {
+    display: flex;
+  
+    .magic-extra-field-field {
+      .magic-extra-field-field-input {
+        position: relative;
+  
+        input[type="checkbox"].magic-checkbox {
+          display: none;
+  
+          &:not(:checked) + label,
+          &:checked + label {
+            padding-left: 35px;
+            cursor: pointer;
+            display: inline-block;
+            height: 25px;
+            line-height: 25px;
+            overflow: hidden;
+            user-select: none; // all modern browsers
+  
+            &:before,
+            &:after {
+              content: '';
+              position: absolute;
+              left: 0;
+              z-index: 1;
+              transition: .2s;
+              width: 19px;
+              height: 19px;
+              border: 1px solid red; // Default border color
+              top: 3px; // Centers the box vertically within the label
+            }
+          }
+  
+          &:not(:checked) + label:after {
+            z-index: 0;
+          }
+  
+          &:checked + label:before {
+            content: '';
+            width: 10px;
+            height: 5px;
+            border: solid white;
+            border-width: 0 0 2px 2px;
+            transform: rotate(306deg);
+            left: 4px;
+            top: 8px; // Centers the checkmark vertically within the box
+            z-index: 2; // Ensure checkmark appears above background
+          }
+  
+          &:checked + label:after {
+            background-color: red; // Changes the background color of the checkbox
+            z-index: 1;
+          }
+  
+          &:disabled:not(:checked) + label:before,
+          &:disabled:checked + label:before {
+            top: 3px;
+            box-shadow: none;
+            background-color: #444;
+            width: 19px;
+            height: 19px;
+            border: 3px solid #444;
+            transform: rotateZ(0deg);
+          }
+  
+          &:disabled + label {
+            color: #555;
+          }
+  
+          &:disabled:not(:checked) + label:hover:before {
+            border-color: red;
+          }
         }
+      }
     }
-}
+  }
 
 
