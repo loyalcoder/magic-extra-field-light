@@ -198,8 +198,53 @@ class Input_Checkbox extends \Elementor\Widget_Base {
                 ],
             ]
         );
+        $this->add_control(
+            'checkbox_title',
+            [
+                'label' => esc_html__('Checkbox Title', 'magic-extra-field-light'),
+                'type' => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+        $this->add_control(
+            'checkbox_field_label_color',
+            [
+                'label' => esc_html__('Color', 'magic-extra-field-light'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .magic-extra-field-checkbox-label' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name' => 'checkbox_field_label_typography',
+                'label' => esc_html__('Typography', 'magic-extra-field-light'),
+                'selector' => '{{WRAPPER}} .magic-extra-field-checkbox-label',
+            ]
+        );
+        $this->add_responsive_control(
+            'checkbox_field_label_margin',
+            [
+                'label' => esc_html__('Margin', 'magic-extra-field-light'),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .magic-extra-field-checkbox-label' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'default' => [
+                    'top' => 0,
+                    'right' => 0,
+                    'bottom' => 10,
+                    'left' => 0,
+                    'unit' => 'px',
+                    'isLinked' => false,
+                ],
+            ]
+        );
         $this->end_controls_section();
-
+        // checkbox field label style section
         // Label Style Section
         $this->add_label_style_controls('{{WRAPPER}} .magic-extra-field-field label');
         // checkbox style section
