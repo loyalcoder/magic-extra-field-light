@@ -246,8 +246,17 @@ trait General_Style_Control {
                         ],
                     ]
                 );
-                
-                
+            
+                $this->add_control(
+                    'checkbox_checked_checkmark_color',
+                    [
+                        'label' => esc_html__('Checkmark Color', 'magic-extra-field-light'),
+                        'type' => \Elementor\Controls_Manager::COLOR,
+                        'selectors' => [
+                            $selector . ':checked + label:before' => 'border-color: {{VALUE}} !important;',
+                        ],
+                    ]
+                );
                 $this->end_controls_section();
     }
 }
