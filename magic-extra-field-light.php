@@ -3,7 +3,7 @@
 /**
  * Plugin Name:       Magic Extra Field Light
  * Plugin URI:        https://magic-extra-field.loyalcoder.com
- * Description:       Add extra fields to WordPress - Light version
+ * Description:       Add custom extra fields to WooCommerce products using Elementor page builder - Light version
  * Version:           1.0.0
  * Author:            Loyalcoder
  * Author URI:        https://loyalcoder.com

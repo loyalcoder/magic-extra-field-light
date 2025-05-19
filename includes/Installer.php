@@ -21,6 +21,7 @@ class Installer
     public function run()
     {
         $this->add_version();
+        $this->flush_rewrite_rules();
     }
 
     /**
@@ -41,5 +42,17 @@ class Installer
         }
 
         update_option('magic_extra_field_light_version', MAGIC_EXTRA_FIELD_LIGHT_VERSION);
+    }
+    /**
+     * Flush rewrite rules on plugin activation
+     * 
+     * Ensures custom post types and taxonomies are properly registered
+     *
+     * @since 1.0.0
+     * @return void
+     */
+    public function flush_rewrite_rules()
+    {
+        flush_rewrite_rules();
     }
 }

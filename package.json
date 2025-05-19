@@ -21,7 +21,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack --mode development --watch",
-    "bundle": "mkdir -p ~/Downloads/magic-extra-field-light && rsync -av --progress . ~/Downloads/magic-extra-field-light --exclude='/.stylelintrc.json' --exclude='/LICENSE' --exclude='/.eslintrc' --exclude='/.eslintrc.json' --exclude='/.git' --exclude='/.gitattributes' --exclude='/.github' --exclude='/.cursorrules'  --exclude='/.gitignore' --exclude='/README.md' --exclude='/node_modules' --exclude='/.travis.yml' --exclude='/phpcs.xml.dist' --exclude='/readme.md' --exclude='/yarn.lock' --exclude='/.editorconfig' --exclude='/.eslintignore' --exclude='/.prettierrc' --exclude='**/.DS_Store' && cd ~/Downloads && zip -r magic-extra-field-light.zip magic-extra-field-light && rm -rf magic-extra-field-light"
+    "bundle": "mkdir -p ~/Downloads/magic-extra-field-light && rsync -av --progress . ~/Downloads/magic-extra-field-light --exclude='/.stylelintrc.json' --exclude='/LICENSE' --exclude='/.eslintrc' --exclude='/.eslintrc.json' --exclude='/.git' --exclude='/.gitattributes' --exclude='/.github' --exclude='/.cursorrules' --exclude='/.gitignore' --exclude='/README.md' --exclude='/node_modules' --exclude='/.travis.yml' --exclude='/phpcs.xml.dist' --exclude='/readme.md' --exclude='/yarn.lock' --exclude='/.editorconfig' --exclude='/.eslintignore' --exclude='/.prettierrc' --exclude='**/.DS_Store' --exclude='/auto-composer-update.sh' --exclude='/install-requests.sh' && cd ~/Downloads && zip -r magic-extra-field-light.zip magic-extra-field-light && rm -rf magic-extra-field-light"
   },
   "dependencies": {
     "dir-archiver": "^2.1.0"
