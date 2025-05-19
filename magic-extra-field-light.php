@@ -2,7 +2,7 @@
 
 /**
  * Plugin Name:       Magic Extra Field Light
- * Plugin URI:        https://marlink-checkout.com
+ * Plugin URI:        https://magic-extra-field.loyalcoder.com
  * Description:       Add extra fields to WordPress - Light version
  * Version:           1.0.0
  * Author:            Loyalcoder

@@ -56,7 +56,7 @@ class LoadElementor
         $elementor->add_category(
             'magic-extra-field-light',
             [
-                'title' =>  esc_html__('Magic Extra Field Widgets', 'magic-extra-field'),
+                'title' =>  esc_html__('Magic Extra Field Widgets', 'magic-extra-field-light'),
                 'icon'  => 'eicon-font',
             ]
         );

@@ -74,7 +74,7 @@ class Input_Email extends \Elementor\Widget_Base {
             'field_name' => [
                 'label' => esc_html__('Name', 'magic-extra-field-light'),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => esc_html__('input-email-' . $this->get_id(), 'magic-extra-field-light'),
+                'default' => esc_html__('input-email-', 'magic-extra-field-light'),
             ]
         ];
 
