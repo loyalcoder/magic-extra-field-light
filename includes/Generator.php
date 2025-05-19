@@ -89,14 +89,17 @@ class Generator
                     'specific' => esc_html__('Specific Products', 'magic-extra-field-light'),
                     'taxonomy' => esc_html__('By Taxonomy', 'magic-extra-field-light')
                 );
-                echo esc_html($types[$display_type]);
+                $display_type = isset($types[$display_type]) ? $types[$display_type] : esc_html__('Unknown', 'magic-extra-field-light');
+                echo esc_html($display_type);
                 break;
 
             case 'display_on':
                 $display_type = get_post_meta($post_id, '_magic_ef_display_type', true);
                 if ($display_type === 'specific') {
                     $products = get_post_meta($post_id, '_magic_ef_selected_products', true);
-                    echo count($products) . ' ' . esc_html__('Products', 'magic-extra-field-light');
+                    $products = is_array($products) ? $products : array();
+                    $text = count($products) > 0 ? count($products) . ' ' . esc_html__('Products', 'magic-extra-field-light') : esc_html__('No Products', 'magic-extra-field-light');
+                    echo esc_html($text);
                 } elseif ($display_type === 'taxonomy') {
                     $taxonomy = get_post_meta($post_id, '_magic_ef_selected_taxonomy', true);
                     $taxonomy_name = ucfirst(str_replace('product_', '', $taxonomy));

@@ -136,7 +136,7 @@ class Ajax
             update_post_meta($post_id, '_magic_ef_display_type', $display_type);
 
             if ($display_type === 'specific' && isset($settings['selected_products'])) {
-                $products = array_map('absint', $settings['selected_products']);
+                $products = is_array($settings['selected_products']) ? array_map('absint', $settings['selected_products']) : [absint($settings['selected_products'])];
                 update_post_meta($post_id, '_magic_ef_selected_products', $products);
             }
 
@@ -145,7 +145,7 @@ class Ajax
                     update_post_meta($post_id, '_magic_ef_selected_taxonomy', sanitize_text_field($settings['selected_taxonomy']));
                 }
                 if (isset($settings['selected_terms'])) {
-                    $terms = array_map('absint', $settings['selected_terms']);
+                    $terms = is_array($settings['selected_terms']) ? array_map('absint', $settings['selected_terms']) : [absint($settings['selected_terms'])];
                     update_post_meta($post_id, '_magic_ef_selected_terms', $terms);
                 }
             }

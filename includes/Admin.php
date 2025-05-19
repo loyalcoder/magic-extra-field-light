@@ -52,7 +52,6 @@ class Admin
             <div class="popup-content">
                 <span class="close">&times;</span>
                 <div class="popup-content-inner">
-                    <h2>Hello World</h2>
                     <form class="magic-ef-form">
                         <div class="form-group">
                             <label for="post_title"><?php echo esc_html__('Title', 'magic-extra-field-light'); ?></label>
