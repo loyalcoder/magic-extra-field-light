@@ -52,18 +52,21 @@ class WooCommerce_Filter {
      */
     public function validate_custom_text_input($passed, $product_id, $quantity) {
         $fields = $this->get_field_name_by_product_id($product_id);
-        
-        foreach ($fields as $field) {
-            if ($field['required'] === 'yes' && empty($_POST[$field['name']])) {
-                wc_add_notice(sprintf(
-                    /* translators: %s: field name */
-                    esc_html__('Please enter %s before adding to cart.', 'magic-extra-field-light'),
-                    $field['name']
-                ), 'error');
-                return false;
+        $data = WC()->cart->get_cart();
+        if(!empty($data) && !empty($fields)){
+            foreach($data as $key => $item){
+                foreach($fields as $field){
+                    if($field['required'] === 'yes' && isset($item[$field['name']]) && empty($item[$field['name']])){
+                        wc_add_notice(sprintf(
+                            /* translators: %s: field name */
+                            esc_html__('Please enter %s before adding to cart.', 'magic-extra-field-light'),
+                            $field['name']
+                        ), 'error');
+                        return false;
+                    }
+                }
             }
         }
-        
         return $passed;
     }
 

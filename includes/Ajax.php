@@ -41,7 +41,7 @@ class Ajax
             wp_send_json_error('Taxonomy parameter is required');
         }
 
-        $taxonomy = sanitize_text_field($_POST['taxonomy']);
+        $taxonomy = sanitize_text_field(wp_unslash($_POST['taxonomy']));
 
         $terms = get_terms([
             'taxonomy' => $taxonomy,
@@ -82,12 +82,11 @@ class Ajax
     public function get_settings_form()
     {
         check_ajax_referer('magic_ef_nonce', 'nonce');
-
-        $post_id = absint($_POST['post_id']);
+        $post_id = isset($_POST['post_id']) ? sanitize_text_field(wp_unslash($_POST['post_id'])) : '';
         $products = $this->get_cached_products();
         $taxonomies = get_object_taxonomies('product', 'objects');
         ob_start();
-        if ($post_id) {
+        if ($post_id != '') {
             include(MAGIC_EXTRA_FIELD_LIGHT_DIR_PATH . '/includes/templates/admin/settings-form.php');
         } else {
             include(MAGIC_EXTRA_FIELD_LIGHT_DIR_PATH . '/includes/templates/admin/create-new.php');
@@ -126,7 +125,8 @@ class Ajax
         }
 
         // Parse settings string into array
-        parse_str($_POST['settings'], $settings);        
+        $settings = isset($_POST['settings']) ? sanitize_text_field(wp_unslash($_POST['settings'])) : '';
+        parse_str($settings, $settings);        
         // Sanitize settings
         $is_active = isset($settings['is_active']) ? '1' : '0';
         update_post_meta($post_id, '_magic_ef_is_active', $is_active);

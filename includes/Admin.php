@@ -29,12 +29,6 @@ class Admin
      */
     public function __construct() 
     {
-        new Admin\Menu();
-        // CMB2 example and custom fields
-        // new Admin\CMB2_Sample();
-        // new Library\CMB2\CMB2_Switch_Button();
-        // new Library\CMB2\PW_CMB2_Field_Select2();
-        // End CMB2 example and custom fields
         add_action('admin_notices', [$this, 'admin_notice']);
     }
 

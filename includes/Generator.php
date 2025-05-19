@@ -99,7 +99,8 @@ class Generator
                     echo count($products) . ' ' . esc_html__('Products', 'magic-extra-field-light');
                 } elseif ($display_type === 'taxonomy') {
                     $taxonomy = get_post_meta($post_id, '_magic_ef_selected_taxonomy', true);
-                    echo ucfirst(str_replace('product_', '', $taxonomy));
+                    $taxonomy_name = ucfirst(str_replace('product_', '', $taxonomy));
+                    echo esc_html($taxonomy_name);
                 } else {
                     echo esc_html__('All Products', 'magic-extra-field-light');
                 }

@@ -77,7 +77,7 @@ class Input_Select extends \Elementor\Widget_Base {
             'field_name' => [
                 'label' => esc_html__('Name', 'magic-extra-field-light'),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => esc_html__('input-select-' . $this->get_id(), 'magic-extra-field-light'),
+                'default' => esc_html__('input-select-', 'magic-extra-field-light'),
             ],
         ];
 
