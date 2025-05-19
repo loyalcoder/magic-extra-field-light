@@ -89,7 +89,6 @@
               top: 3px; // Centers the box vertically within the label
             }
           }
-  
           &:not(:checked) + label:after {
             z-index: 0;
           }
