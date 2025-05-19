@@ -1,0 +1,651 @@
+# Copyright (C) 2025 Loyalcoder
+# This file is distributed under the GPL v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Magic Extra Field Light 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/magic-extra-field-light\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-05-19T16:04:15+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.10.0\n"
+"X-Domain: magic-extra-field-light\n"
+
+#. Plugin Name of the plugin
+#: magic-extra-field-light.php
+msgid "Magic Extra Field Light"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: magic-extra-field-light.php
+msgid "https://magic-extra-field.loyalcoder.com"
+msgstr ""
+
+#. Description of the plugin
+#: magic-extra-field-light.php
+msgid "Add extra fields to WordPress - Light version"
+msgstr ""
+
+#. Author of the plugin
+#: magic-extra-field-light.php
+msgid "Loyalcoder"
+msgstr ""
+
+#. Author URI of the plugin
+#: magic-extra-field-light.php
+msgid "https://loyalcoder.com"
+msgstr ""
+
+#: includes/Admin.php:58
+#: includes/templates/admin/create-new.php:2
+msgid "Title"
+msgstr ""
+
+#: includes/Admin.php:68
+#: includes/templates/admin/create-new.php:12
+#: includes/templates/admin/settings-form.php:23
+msgid "Active"
+msgstr ""
+
+#: includes/Admin.php:74
+#: includes/Generator.php:75
+#: includes/templates/admin/create-new.php:18
+msgid "Display Type"
+msgstr ""
+
+#: includes/Admin.php:76
+#: includes/Generator.php:88
+#: includes/Generator.php:105
+#: includes/templates/admin/create-new.php:20
+#: includes/templates/admin/settings-form.php:31
+msgid "All Products"
+msgstr ""
+
+#: includes/Admin.php:77
+#: includes/Generator.php:89
+#: includes/templates/admin/create-new.php:21
+#: includes/templates/admin/settings-form.php:32
+msgid "Specific Products"
+msgstr ""
+
+#: includes/Admin.php:78
+#: includes/Generator.php:90
+#: includes/templates/admin/create-new.php:22
+#: includes/templates/admin/settings-form.php:33
+msgid "By Taxonomy"
+msgstr ""
+
+#: includes/Admin.php:84
+#: includes/templates/admin/create-new.php:28
+msgid "Select Products"
+msgstr ""
+
+#: includes/Admin.php:102
+#: includes/templates/admin/create-new.php:46
+msgid "Select Taxonomy"
+msgstr ""
+
+#: includes/Admin.php:104
+#: includes/templates/admin/create-new.php:48
+msgid "Product Category"
+msgstr ""
+
+#: includes/Admin.php:105
+#: includes/templates/admin/create-new.php:49
+msgid "Product Tag"
+msgstr ""
+
+#: includes/Admin.php:111
+#: includes/templates/admin/create-new.php:55
+msgid "Select Terms"
+msgstr ""
+
+#: includes/Admin.php:119
+#: includes/templates/admin/create-new.php:63
+#: includes/templates/admin/settings-form.php:124
+msgid "Save"
+msgstr ""
+
+#: includes/Admin.php:121
+#: includes/templates/admin/create-new.php:65
+#: includes/templates/admin/settings-form.php:127
+msgid "Edit with Elementor"
+msgstr ""
+
+#: includes/Ajax.php:155
+msgid "Settings saved"
+msgstr ""
+
+#: includes/Assets.php:72
+msgid "Message from enquiry form"
+msgstr ""
+
+#: includes/Elementor.php:59
+msgid "Magic Extra Field Widgets"
+msgstr ""
+
+#: includes/Elementor/Input_Checkbox.php:30
+msgid "Magic Checkbox"
+msgstr ""
+
+#: includes/Elementor/Input_Checkbox.php:50
+#: includes/Elementor/Input_Email.php:49
+#: includes/Elementor/Input_Number.php:84
+#: includes/Elementor/Input_Password.php:94
+#: includes/Elementor/Input_Radio.php:50
+#: includes/Elementor/Input_Select.php:50
+#: includes/Elementor/Input_Tel.php:46
+#: includes/Elementor/Input_Text.php:93
+#: includes/Elementor/Input_Textarea.php:49
+msgid "Content"
+msgstr ""
+
+#: includes/Elementor/Input_Checkbox.php:57
+#: includes/Elementor/Input_Email.php:58
+#: includes/Elementor/Input_Number.php:93
+#: includes/Elementor/Input_Password.php:105
+#: includes/Elementor/Input_Radio.php:61
+#: includes/Elementor/Input_Select.php:61
+#: includes/Elementor/Input_Tel.php:55
+#: includes/Elementor/Input_Text.php:104
+#: includes/Elementor/Input_Textarea.php:58
+msgid "Field Label"
+msgstr ""
+
+#: includes/Elementor/Input_Checkbox.php:59
+msgid "Checkbox Field"
+msgstr ""
+
+#: includes/Elementor/Input_Checkbox.php:67
+msgid "Checkbox Label"
+msgstr ""
+
+#: includes/Elementor/Input_Checkbox.php:69
+msgid "Checkbox Option"
+msgstr ""
+
+#: includes/Elementor/Input_Checkbox.php:77
+msgid "Value"
+msgstr ""
+
+#: includes/Elementor/Input_Checkbox.php:79
+msgid "value"
+msgstr ""
+
+#: includes/Elementor/Input_Checkbox.php:86
+msgid "Checked by Default"
+msgstr ""
+
+#: includes/Elementor/Input_Checkbox.php:88
+#: includes/Elementor/Input_Checkbox.php:130
+#: includes/Elementor/Input_Email.php:70
+#: includes/Elementor/Input_Number.php:121
+#: includes/Elementor/Input_Password.php:117
+#: includes/Elementor/Input_Radio.php:73
+#: includes/Elementor/Input_Select.php:73
+#: includes/Elementor/Input_Tel.php:67
+#: includes/Elementor/Input_Text.php:116
+#: includes/Elementor/Input_Textarea.php:89
+msgid "Yes"
+msgstr ""
+
+#: includes/Elementor/Input_Checkbox.php:89
+#: includes/Elementor/Input_Checkbox.php:131
+#: includes/Elementor/Input_Email.php:71
+#: includes/Elementor/Input_Number.php:122
+#: includes/Elementor/Input_Password.php:118
+#: includes/Elementor/Input_Radio.php:74
+#: includes/Elementor/Input_Select.php:74
+#: includes/Elementor/Input_Tel.php:68
+#: includes/Elementor/Input_Text.php:117
+#: includes/Elementor/Input_Textarea.php:90
+msgid "No"
+msgstr ""
+
+#: includes/Elementor/Input_Checkbox.php:97
+msgid "Checkbox Options"
+msgstr ""
+
+#: includes/Elementor/Input_Checkbox.php:102
+#: includes/Elementor/Input_Radio.php:110
+#: includes/Elementor/Input_Select.php:114
+msgid "Option 1"
+msgstr ""
+
+#: includes/Elementor/Input_Checkbox.php:107
+#: includes/Elementor/Input_Radio.php:114
+#: includes/Elementor/Input_Select.php:118
+msgid "Option 2"
+msgstr ""
+
+#: includes/Elementor/Input_Checkbox.php:119
+msgid "Field Name"
+msgstr ""
+
+#: includes/Elementor/Input_Checkbox.php:128
+#: includes/Elementor/Input_Email.php:68
+#: includes/Elementor/Input_Number.php:119
+#: includes/Elementor/Input_Password.php:115
+#: includes/Elementor/Input_Radio.php:71
+#: includes/Elementor/Input_Select.php:71
+#: includes/Elementor/Input_Tel.php:65
+#: includes/Elementor/Input_Text.php:114
+#: includes/Elementor/Input_Textarea.php:87
+msgid "Required"
+msgstr ""
+
+#: includes/Elementor/Input_Checkbox.php:140
+msgid "Checkbox Layout"
+msgstr ""
+
+#: includes/Elementor/Input_Checkbox.php:147
+msgid "Alignment"
+msgstr ""
+
+#: includes/Elementor/Input_Checkbox.php:151
+#: includes/Elementor/Input_Radio.php:206
+msgid "Vertical"
+msgstr ""
+
+#: includes/Elementor/Input_Checkbox.php:155
+#: includes/Elementor/Input_Radio.php:210
+msgid "Horizontal"
+msgstr ""
+
+#: includes/Elementor/Input_Checkbox.php:172
+msgid "Gap"
+msgstr ""
+
+#: includes/Elementor/Input_Checkbox.php:204
+msgid "Checkbox Title"
+msgstr ""
+
+#: includes/Elementor/Input_Checkbox.php:212
+msgid "Color"
+msgstr ""
+
+#: includes/Elementor/Input_Checkbox.php:223
+msgid "Typography"
+msgstr ""
+
+#: includes/Elementor/Input_Checkbox.php:230
+#: includes/Traits/General_Style_Control.php:46
+#: includes/Traits/General_Style_Control.php:131
+msgid "Margin"
+msgstr ""
+
+#: includes/Elementor/Input_Email.php:30
+msgid "Magic Input Email"
+msgstr ""
+
+#: includes/Elementor/Input_Email.php:60
+msgid "Email Field"
+msgstr ""
+
+#: includes/Elementor/Input_Email.php:63
+#: includes/Elementor/Input_Number.php:98
+#: includes/Elementor/Input_Password.php:110
+#: includes/Elementor/Input_Select.php:66
+#: includes/Elementor/Input_Tel.php:60
+#: includes/Elementor/Input_Text.php:109
+#: includes/Elementor/Input_Textarea.php:63
+msgid "Placeholder"
+msgstr ""
+
+#: includes/Elementor/Input_Email.php:65
+msgid "Enter your email"
+msgstr ""
+
+#: includes/Elementor/Input_Email.php:75
+#: includes/Elementor/Input_Number.php:126
+#: includes/Elementor/Input_Password.php:122
+#: includes/Elementor/Input_Radio.php:66
+#: includes/Elementor/Input_Select.php:78
+#: includes/Elementor/Input_Tel.php:72
+#: includes/Elementor/Input_Text.php:121
+#: includes/Elementor/Input_Textarea.php:94
+msgid "Name"
+msgstr ""
+
+#: includes/Elementor/Input_Email.php:77
+msgid "input-email-"
+msgstr ""
+
+#: includes/Elementor/Input_Number.php:44
+msgid "Magic Input Number"
+msgstr ""
+
+#: includes/Elementor/Input_Number.php:95
+msgid "Number Field"
+msgstr ""
+
+#: includes/Elementor/Input_Number.php:100
+msgid "Enter number"
+msgstr ""
+
+#: includes/Elementor/Input_Number.php:103
+msgid "Minimum Value"
+msgstr ""
+
+#: includes/Elementor/Input_Number.php:108
+msgid "Maximum Value"
+msgstr ""
+
+#: includes/Elementor/Input_Number.php:113
+msgid "Step"
+msgstr ""
+
+#: includes/Elementor/Input_Password.php:48
+msgid "Magic Input Password"
+msgstr ""
+
+#: includes/Elementor/Input_Password.php:107
+msgid "Password Field"
+msgstr ""
+
+#: includes/Elementor/Input_Password.php:112
+msgid "Enter password"
+msgstr ""
+
+#: includes/Elementor/Input_Password.php:124
+msgid "input-password-"
+msgstr ""
+
+#: includes/Elementor/Input_Radio.php:30
+msgid "Magic Input Radio"
+msgstr ""
+
+#: includes/Elementor/Input_Radio.php:63
+msgid "Radio Field"
+msgstr ""
+
+#: includes/Elementor/Input_Radio.php:68
+msgid "input-radio-"
+msgstr ""
+
+#: includes/Elementor/Input_Radio.php:86
+#: includes/Elementor/Input_Select.php:90
+msgid "Option Label"
+msgstr ""
+
+#: includes/Elementor/Input_Radio.php:88
+#: includes/Elementor/Input_Select.php:92
+msgid "Option"
+msgstr ""
+
+#: includes/Elementor/Input_Radio.php:96
+#: includes/Elementor/Input_Select.php:100
+msgid "Option Value"
+msgstr ""
+
+#: includes/Elementor/Input_Radio.php:105
+msgid "Radio Options"
+msgstr ""
+
+#: includes/Elementor/Input_Radio.php:139
+msgid "Radio Style"
+msgstr ""
+
+#: includes/Elementor/Input_Radio.php:146
+msgid "Size"
+msgstr ""
+
+#: includes/Elementor/Input_Radio.php:172
+#: includes/Traits/General_Style_Control.php:35
+msgid "Label Color"
+msgstr ""
+
+#: includes/Elementor/Input_Radio.php:184
+msgid "Label Typography"
+msgstr ""
+
+#: includes/Elementor/Input_Radio.php:191
+msgid "Label Margin"
+msgstr ""
+
+#: includes/Elementor/Input_Radio.php:202
+msgid "Layout"
+msgstr ""
+
+#: includes/Elementor/Input_Radio.php:224
+msgid "Spacing"
+msgstr ""
+
+#: includes/Elementor/Input_Select.php:30
+msgid "Magic Input Select"
+msgstr ""
+
+#: includes/Elementor/Input_Select.php:63
+msgid "Select Field"
+msgstr ""
+
+#: includes/Elementor/Input_Select.php:68
+msgid "Select an option"
+msgstr ""
+
+#: includes/Elementor/Input_Select.php:80
+msgid "input-select-"
+msgstr ""
+
+#: includes/Elementor/Input_Select.php:109
+msgid "Select Options"
+msgstr ""
+
+#: includes/Elementor/Input_Tel.php:31
+msgid "Magic Input Tel"
+msgstr ""
+
+#: includes/Elementor/Input_Tel.php:57
+msgid "Phone Number"
+msgstr ""
+
+#: includes/Elementor/Input_Tel.php:62
+msgid "Enter phone number"
+msgstr ""
+
+#: includes/Elementor/Input_Tel.php:77
+msgid "Pattern"
+msgstr ""
+
+#: includes/Elementor/Input_Tel.php:80
+msgid "Enter a pattern for phone number validation (e.g., [0-9]{3}-[0-9]{3}-[0-9]{4})"
+msgstr ""
+
+#: includes/Elementor/Input_Text.php:47
+msgid "Magic Input Text"
+msgstr ""
+
+#: includes/Elementor/Input_Text.php:106
+msgid "Text Field"
+msgstr ""
+
+#: includes/Elementor/Input_Text.php:111
+msgid "Enter text here"
+msgstr ""
+
+#: includes/Elementor/Input_Text.php:123
+msgid "input-text-"
+msgstr ""
+
+#: includes/Elementor/Input_Textarea.php:30
+msgid "Magic Input Textarea"
+msgstr ""
+
+#: includes/Elementor/Input_Textarea.php:60
+msgid "Textarea Field"
+msgstr ""
+
+#: includes/Elementor/Input_Textarea.php:65
+msgid "Enter your message here"
+msgstr ""
+
+#: includes/Elementor/Input_Textarea.php:68
+msgid "Default Value"
+msgstr ""
+
+#: includes/Elementor/Input_Textarea.php:73
+msgid "Rows"
+msgstr ""
+
+#: includes/Elementor/Input_Textarea.php:80
+msgid "Columns"
+msgstr ""
+
+#: includes/Elementor/Input_Textarea.php:96
+msgid "input-textarea-"
+msgstr ""
+
+#: includes/Generator.php:49
+msgid "Magic EF Builders"
+msgstr ""
+
+#: includes/Generator.php:50
+msgid "Magic EF Builder"
+msgstr ""
+
+#: includes/Generator.php:51
+#: includes/Generator.php:52
+msgid "Add New Builder"
+msgstr ""
+
+#: includes/Generator.php:53
+msgid "Edit Builder"
+msgstr ""
+
+#: includes/Generator.php:54
+msgid "New Builder"
+msgstr ""
+
+#: includes/Generator.php:55
+msgid "View Builder"
+msgstr ""
+
+#: includes/Generator.php:56
+msgid "Search Builders"
+msgstr ""
+
+#: includes/Generator.php:57
+msgid "No builders found"
+msgstr ""
+
+#: includes/Generator.php:58
+msgid "No builders found in Trash"
+msgstr ""
+
+#: includes/Generator.php:76
+msgid "Display On"
+msgstr ""
+
+#: includes/Generator.php:77
+msgid "Settings"
+msgstr ""
+
+#: includes/Generator.php:99
+msgid "Products"
+msgstr ""
+
+#: includes/Generator.php:113
+msgid "Edit Settings"
+msgstr ""
+
+#: includes/templates/admin/settings-form.php:29
+msgid "Display Type:"
+msgstr ""
+
+#: includes/templates/admin/settings-form.php:39
+msgid "Select Products:"
+msgstr ""
+
+#: includes/templates/admin/settings-form.php:64
+msgid "Select Taxonomy:"
+msgstr ""
+
+#: includes/templates/admin/settings-form.php:66
+msgid "Select a taxonomy"
+msgstr ""
+
+#: includes/templates/admin/settings-form.php:88
+msgid "Select Terms:"
+msgstr ""
+
+#: includes/Traits/General_Style_Control.php:19
+msgid "Label Style"
+msgstr ""
+
+#: includes/Traits/General_Style_Control.php:68
+msgid "Input Style"
+msgstr ""
+
+#: includes/Traits/General_Style_Control.php:84
+msgid "Text Color"
+msgstr ""
+
+#: includes/Traits/General_Style_Control.php:95
+msgid "Placeholder Color"
+msgstr ""
+
+#: includes/Traits/General_Style_Control.php:110
+msgid "Background"
+msgstr ""
+
+#: includes/Traits/General_Style_Control.php:119
+msgid "Padding"
+msgstr ""
+
+#: includes/Traits/General_Style_Control.php:146
+msgid "Normal"
+msgstr ""
+
+#: includes/Traits/General_Style_Control.php:154
+#: includes/Traits/General_Style_Control.php:182
+msgid "Border"
+msgstr ""
+
+#: includes/Traits/General_Style_Control.php:163
+#: includes/Traits/General_Style_Control.php:191
+msgid "Box Shadow"
+msgstr ""
+
+#: includes/Traits/General_Style_Control.php:174
+msgid "Focus"
+msgstr ""
+
+#: includes/Traits/General_Style_Control.php:213
+msgid "Checkbox Style"
+msgstr ""
+
+#: includes/Traits/General_Style_Control.php:220
+msgid "Border Color"
+msgstr ""
+
+#: includes/Traits/General_Style_Control.php:230
+msgid "Checked Background Color"
+msgstr ""
+
+#: includes/Traits/General_Style_Control.php:242
+msgid "Checked Border Color"
+msgstr ""
+
+#: includes/Traits/General_Style_Control.php:253
+msgid "Checkmark Color"
+msgstr ""
+
+#: includes/Traits/template/type-password.php:38
+msgid "Show password"
+msgstr ""
+
+#. translators: %s: field name
+#: includes/WooCommerce_Filter.php:62
+msgid "Please enter %s before adding to cart."
+msgstr ""
+
+#: magic-extra-field-light.php:134
+msgid "Magic Extra Field Light requires WooCommerce to be installed and activated."
+msgstr ""
+
+#: magic-extra-field-light.php:146
+msgid "Magic Extra Field Light requires Elementor to be installed and activated."
+msgstr ""

@@ -1,6 +1,6 @@
 {
   "name": "magic-extra-field-light",
-  "version": "1.0.0", 
+  "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/loyalcoder/magic-extra-field-light.git",
   "author": "Md Nayeem Farid <39758380+nayeem07007@users.noreply.github.com>",
@@ -9,7 +9,7 @@
     "@babel/core": "^7.24.0",
     "@babel/preset-env": "^7.24.0",
     "babel-loader": "^9.1.3",
-    "css-loader": "^7.1.2", 
+    "css-loader": "^7.1.2",
     "mini-css-extract-plugin": "^2.8.1",
     "postcss": "^8.4.35",
     "postcss-loader": "^8.1.1",
@@ -20,6 +20,10 @@
   },
   "scripts": {
     "build": "webpack --mode production",
-    "dev": "webpack --mode development --watch"
+    "dev": "webpack --mode development --watch",
+    "bundle": "mkdir -p ~/Downloads/magic-extra-field-light && rsync -av --progress . ~/Downloads/magic-extra-field-light --exclude='/.stylelintrc.json' --exclude='/LICENSE' --exclude='/.eslintrc' --exclude='/.eslintrc.json' --exclude='/.git' --exclude='/.gitattributes' --exclude='/.github' --exclude='/.cursorrules'  --exclude='/.gitignore' --exclude='/README.md' --exclude='/node_modules' --exclude='/.travis.yml' --exclude='/phpcs.xml.dist' --exclude='/readme.md' --exclude='/yarn.lock' --exclude='/.editorconfig' --exclude='/.eslintignore' --exclude='/.prettierrc' --exclude='**/.DS_Store' && cd ~/Downloads && zip -r magic-extra-field-light.zip magic-extra-field-light && rm -rf magic-extra-field-light"
+  },
+  "dependencies": {
+    "dir-archiver": "^2.1.0"
   }
 }
