@@ -41,7 +41,7 @@ class WooCommerce_Filter {
             $elementor_content = $elementor_instance->frontend->get_builder_content_for_display($builder_id);
             
             if (!empty($elementor_content)) {
-                echo wp_kses($elementor_content, allow_html_for_custom_field());
+                echo wp_kses($elementor_content, magic_extra_field_light_allow_html());
                 wp_nonce_field('magic_extra_field_action', 'magic_extra_field_nonce');
             }
         }

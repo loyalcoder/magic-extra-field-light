@@ -15,31 +15,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-if (!function_exists('add_custom_total_price')) {
-    /**
-     * Add custom price to cart total
-     * 
-     * Adds a fixed framed price to each cart item during total calculation
-     *
-     * @param WC_Cart $cart WooCommerce cart object
-     * @return void
-     * @since 1.0.0
-     */
-    add_action('woocommerce_before_calculate_totals', 'add_custom_total_price', 10);
-    function add_custom_total_price($cart) {
-        if (is_admin() && !defined('DOING_AJAX')) {
-            return;
-        }
-
-        $framed_price = 10;
-
-        foreach ($cart->get_cart() as $item) {
-            $item['data']->set_price($item['data']->get_price() + $framed_price);
-        }
-    }
-}
-
-if (!function_exists('allow_html_for_custom_field')) {
+if (!function_exists('magic_extra_field_light_allow_html')) {
     /**
      * Define allowed HTML tags for custom fields
      * 
@@ -49,7 +25,7 @@ if (!function_exists('allow_html_for_custom_field')) {
      * @return array Array of allowed HTML elements and attributes
      * @since 1.0.0
      */
-    function allow_html_for_custom_field() {
+    function magic_extra_field_light_allow_html() {
         return array(
             'a' => array(
                 'href' => array(), 'title' => array(), 'target' => array(), 'class' => array(), 'id' => array(), 'style' => array(),

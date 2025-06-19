@@ -1,3 +1,9 @@
+<?php
+// Exit if accessed directly
+if (!defined('ABSPATH')) {
+    exit;
+}
+?>
 <div class="form-group">
     <label for="post_title"><?php echo esc_html__('Title', 'magic-extra-field-light'); ?></label>
     <input type="text" id="post_title" name="post_title" class="regular-text" required>

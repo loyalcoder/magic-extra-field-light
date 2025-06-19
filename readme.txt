@@ -3,7 +3,7 @@ Contributors: loyalcoder
 Tags: woocommerce, elementor, custom fields, product fields
 Requires at least: 5.8
 Tested up to: 6.8
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -53,4 +53,41 @@ Magic Extra Field Light is a lightweight WordPress plugin that allows you to add
    git clone https://github.com/loyalcoder/magic-extra-field-light.git
    ```
 
+2. Navigate to the plugin directory:
+   ```bash
+   cd magic-extra-field-light
+   ```
+
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+4. Build the assets:
+   ```bash
+   npm run build
+   ```
+
+= Source Code =
+
+This plugin uses build tools to generate optimized production assets. The source code for all JavaScript and CSS files is available in the following locations:
+
+* **JavaScript Source**: `assets/src/js/` - Contains the original, human-readable JavaScript source files
+* **CSS Source**: `assets/src/css/` - Contains the original, human-readable CSS source files
+* **Build Configuration**: `webpack.config.js` - Webpack configuration for asset compilation
+
+The compiled/minified assets are located in `assets/dist/` and are generated from the source files using webpack.
+
+= Build Tools =
+
+This plugin uses the following build tools:
+* **Webpack**: For bundling and optimizing JavaScript and CSS assets
+* **npm**: For dependency management and build scripts
+
+To modify the plugin's frontend or admin interface:
+1. Edit the source files in `assets/src/`
+2. Run `npm run build` to compile changes
+3. Test your modifications
+
+The source code is also available on GitHub: https://github.com/loyalcoder/magic-extra-field-light
 
