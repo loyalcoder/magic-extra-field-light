@@ -29,6 +29,7 @@ class WooCommerce_Filter {
         add_filter('woocommerce_get_item_data', [$this, 'display_custom_text_in_cart'], 10, 2);
         add_action('woocommerce_checkout_create_order_line_item', [$this, 'save_custom_text_to_order'], 10, 4);
        // add_filter('woocommerce_order_item_meta_end', [$this, 'display_custom_text_in_order'], 10, 4);
+        add_action( 'woocommerce_before_calculate_totals', [$this, 'before_calculate_totals'], 10 );
     }
 
     /**
@@ -79,16 +80,20 @@ class WooCommerce_Filter {
         }
         
         $fields = $this->get_field_name_by_product_id($product_id);
-        
         foreach ($fields as $field) {
             if (!empty($_POST[$field['name']])) {
                 $custom_text = is_array($_POST[$field['name']]) 
                     ? implode(',', array_map('sanitize_text_field', wp_unslash($_POST[$field['name']])))
                     : sanitize_text_field(wp_unslash($_POST[$field['name']]));
+                if(isset($_POST[$field['name'].'quantity'])){
+                    $cart_item_data[$field['name'].'quantity'] = $_POST[$field['name'].'quantity'];
+                }
+                if(isset($_POST[$field['name'].'price'])){
+                    $cart_item_data[$field['name'].'price'] = $_POST[$field['name'].'price'];
+                }
                 $cart_item_data[$field['name']] = $custom_text;
             }
         }
-        
         return $cart_item_data;
     }
 
@@ -98,11 +103,19 @@ class WooCommerce_Filter {
     public function display_custom_text_in_cart($item_data, $cart_item) {
         $fields = $this->get_field_name_by_product_id($cart_item['product_id']);
         foreach ($fields as $field) {
-            if (!empty($cart_item[$field['name']])) {
+            if (isset($cart_item[$field['name']]) && !empty($cart_item[$field['name']])) {
+                $display_price = isset($cart_item[$field['name'].'price']) ? $cart_item[$field['name'].'price'] : '';
+                $display_quantity = isset($cart_item[$field['name'].'quantity']) ? $cart_item[$field['name'].'quantity'] : '';
+                if($display_price != '' && $display_quantity != ''){
+                    $display = $cart_item[$field['name']].' + '.$display_price.' x '.$display_quantity;
+                }else{
+                    $display = $cart_item[$field['name']];
+                }
                 $item_data[] = [
                     'name'  => esc_html($field['label']),
-                    'value' => esc_html($cart_item[$field['name']]),
+                    'value' => esc_html($display),
                 ];
+
             }
         }
         return $item_data;
@@ -275,4 +288,36 @@ class WooCommerce_Filter {
         }
         return false;
     } 
+    public function before_calculate_totals($cart) {
+        if ( is_admin() && ! defined( 'DOING_AJAX' ) ){
+            return;
+        }
+      // Check to ensure action is only performed once
+      if (did_action('woocommerce_before_calculate_totals') >= 2) {
+        return;
+      }
+        $custom_price = [];
+        if (is_object($cart)) {
+            foreach ($cart->get_cart() as $cart_item_key => $cart_item) {
+                // Get product ID from cart item
+                $product_id = $cart_item['product_id'];
+                $fields = $this->get_field_name_by_product_id($product_id);
+                if(!empty($fields)){
+                    foreach($fields as $field){
+                        if(isset($cart_item[$field['name'].'price'])){
+                            $framed_price = $cart_item[$field['name'].'price'];
+                            $quantity = isset($cart_item[$field['name'].'quantity']) ? $cart_item[$field['name'].'quantity'] : 1;
+                            $custom_price[] = (int) $framed_price * (int) $quantity;
+                        }
+                    }
+                }
+            }
+        }
+        if(!empty($custom_price)){
+            $total_custom_price = array_sum($custom_price);
+            foreach ( $cart->get_cart() as $item ) {
+                $item['data']->set_price( $item['data']->get_price() + $total_custom_price );
+            }
+        }
+    }
 }
