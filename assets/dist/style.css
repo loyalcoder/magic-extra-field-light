@@ -3,6 +3,10 @@
   \********************************************************************************************************************************************************/
 .magic-extra-field-light-d-block {
   display: block;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin-bottom: 0.625rem;
 }
 
 .magic-extra-field-light-d-inline {
@@ -14,24 +18,22 @@
 .magic-input-text {
   display: block;
   width: 100%;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
+  padding: 0.55rem 0.75rem;
   font-weight: 400;
-  line-height: 1.5;
-  color: #212529;
+  line-height: 1.8;
   background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  border-radius: 0.25rem;
+  border: 1px solid rgb(214, 217, 227);
+  border-radius: 0.5rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 .magic-input:focus,
 .magic-input-text:focus {
   color: #212529;
-  background-color: #fff;
-  border-color: #86b7fe;
-  outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  outline-color: #d6d9e3;
+  outline-offset: 2px;
+  outline-width: 2px;
+  outline-style: solid;
+  border-color: #1b1e27;
 }
 .magic-input::placeholder,
 .magic-input-text::placeholder {
@@ -54,65 +56,104 @@
   display: flex;
 }
 
-.magic-extra-field-checkbox-wrapper {
+.form-container {
+  max-width: 400px;
+  margin: 0 auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.field-group {
+  margin-bottom: 2rem;
+}
+.field-group:last-child {
+  margin-bottom: 0;
+}
+
+.field-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.radio-group {
   display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
-.magic-extra-field-checkbox-wrapper .magic-extra-field-field .magic-extra-field-field-input {
-  position: relative;
-}
-.magic-extra-field-checkbox-wrapper .magic-extra-field-field .magic-extra-field-field-input input[type=checkbox].magic-checkbox {
-  display: none;
-}
-.magic-extra-field-checkbox-wrapper .magic-extra-field-field .magic-extra-field-field-input input[type=checkbox].magic-checkbox:not(:checked) + label, .magic-extra-field-checkbox-wrapper .magic-extra-field-field .magic-extra-field-field-input input[type=checkbox].magic-checkbox:checked + label {
-  padding-left: 35px;
+
+.magic-extra-field-radio-option {
+  display: flex;
+  align-items: center;
   cursor: pointer;
-  display: inline-block;
-  height: 25px;
-  line-height: 25px;
-  overflow: hidden;
-  user-select: none;
+  padding: 0.25rem 0;
 }
-.magic-extra-field-checkbox-wrapper .magic-extra-field-field .magic-extra-field-field-input input[type=checkbox].magic-checkbox:not(:checked) + label:before, .magic-extra-field-checkbox-wrapper .magic-extra-field-field .magic-extra-field-field-input input[type=checkbox].magic-checkbox:not(:checked) + label:after, .magic-extra-field-checkbox-wrapper .magic-extra-field-field .magic-extra-field-field-input input[type=checkbox].magic-checkbox:checked + label:before, .magic-extra-field-checkbox-wrapper .magic-extra-field-field .magic-extra-field-field-input input[type=checkbox].magic-checkbox:checked + label:after {
-  content: "";
-  position: absolute;
-  left: 0;
-  z-index: 1;
-  transition: 0.2s;
-  width: 19px;
-  height: 19px;
-  border: 1px solid red;
-  top: 3px;
+.magic-extra-field-radio-option input[type=radio] {
+  width: 18px;
+  height: 18px;
+  margin-right: 0.75rem;
+  cursor: pointer;
+  accent-color: #007bff;
 }
-.magic-extra-field-checkbox-wrapper .magic-extra-field-field .magic-extra-field-field-input input[type=checkbox].magic-checkbox:not(:checked) + label:after {
-  z-index: 0;
+.magic-extra-field-radio-option input[type=radio]:focus {
+  outline: none;
 }
-.magic-extra-field-checkbox-wrapper .magic-extra-field-field .magic-extra-field-field-input input[type=checkbox].magic-checkbox:checked + label:before {
-  content: "";
-  width: 10px;
-  height: 5px;
-  border: solid white;
-  border-width: 0 0 2px 2px;
-  transform: rotate(306deg);
-  left: 4px;
-  top: 8px;
-  z-index: 2;
+.magic-extra-field-radio-option label {
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
-.magic-extra-field-checkbox-wrapper .magic-extra-field-field .magic-extra-field-field-input input[type=checkbox].magic-checkbox:checked + label:after {
-  background-color: red;
-  z-index: 1;
+.magic-extra-field-radio-option:hover label {
+  color: #007bff;
 }
-.magic-extra-field-checkbox-wrapper .magic-extra-field-field .magic-extra-field-field-input input[type=checkbox].magic-checkbox:disabled:not(:checked) + label:before, .magic-extra-field-checkbox-wrapper .magic-extra-field-field .magic-extra-field-field-input input[type=checkbox].magic-checkbox:disabled:checked + label:before {
-  top: 3px;
-  box-shadow: none;
-  background-color: #444;
-  width: 19px;
-  height: 19px;
-  border: 3px solid #444;
-  transform: rotateZ(0deg);
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
-.magic-extra-field-checkbox-wrapper .magic-extra-field-field .magic-extra-field-field-input input[type=checkbox].magic-checkbox:disabled + label {
-  color: #555;
+
+.magic-extra-field-field.checkbox .magic-extra-field-field-input {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.25rem 0;
 }
-.magic-extra-field-checkbox-wrapper .magic-extra-field-field .magic-extra-field-field-input input[type=checkbox].magic-checkbox:disabled:not(:checked) + label:hover:before {
-  border-color: red;
+.magic-extra-field-field.checkbox .magic-extra-field-field-input input[type=checkbox] {
+  width: 18px;
+  height: 18px;
+  margin-right: 0.75rem;
+  cursor: pointer;
+  accent-color: #007bff;
+}
+.magic-extra-field-field.checkbox .magic-extra-field-field-input input[type=checkbox]:hover {
+  transform: scale(1.05);
+}
+.magic-extra-field-field.checkbox .magic-extra-field-field-input input[type=checkbox]:focus {
+  outline: none;
+}
+.magic-extra-field-field.checkbox .magic-extra-field-field-input label {
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+.magic-extra-field-field.checkbox .magic-extra-field-field-input:hover label {
+  color: #007bff;
+}
+
+@media (max-width: 480px) {
+  .form-container {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+  .field-title {
+    font-size: 1rem;
+  }
+  .radio-text,
+  .checkbox-text {
+    font-size: 0.9rem;
+  }
 }
