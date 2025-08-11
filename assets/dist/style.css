@@ -1,6 +1,7 @@
 /*!********************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/scss/style.scss ***!
   \********************************************************************************************************************************************************/
+.magic-extra-field-checkbox-label,
 .magic-extra-field-light-d-block {
   display: block;
   font-weight: 400;
@@ -14,6 +15,9 @@
 }
 
 /*input type text style */
+.magic-input-tel,
+.magic-input-number,
+.magic-extra-field-quantity,
 .magic-input,
 .magic-input-text {
   display: block;
@@ -26,6 +30,9 @@
   border-radius: 0.5rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+.magic-input-tel:focus,
+.magic-input-number:focus,
+.magic-extra-field-quantity:focus,
 .magic-input:focus,
 .magic-input-text:focus {
   color: #212529;
@@ -35,11 +42,17 @@
   outline-style: solid;
   border-color: #1b1e27;
 }
+.magic-input-tel::placeholder,
+.magic-input-number::placeholder,
+.magic-extra-field-quantity::placeholder,
 .magic-input::placeholder,
 .magic-input-text::placeholder {
   color: #6c757d;
   opacity: 1;
 }
+.magic-input-tel:disabled,
+.magic-input-number:disabled,
+.magic-extra-field-quantity:disabled,
 .magic-input:disabled,
 .magic-input-text:disabled {
   background-color: #e9ecef;
@@ -156,4 +169,44 @@
   .checkbox-text {
     font-size: 0.9rem;
   }
+}
+select.magic-input-select {
+  padding: 13px 12px;
+}
+
+textarea.magic-input-textarea {
+  font-family: inherit;
+}
+
+.magic-extra-filed-wrapper .magic-extra-filed-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 0.625rem;
+}
+.magic-extra-filed-wrapper .magic-extra-filed-label .magic-field-label {
+  margin-bottom: 0;
+}
+.magic-extra-filed-wrapper .magic-extra-filed-label .magic-field-label,
+.magic-extra-filed-wrapper .magic-extra-filed-label .magic-extra-field-price {
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+.magic-extra-filed-wrapper .magic-extra-field-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.magic-extra-filed-wrapper .magic-extra-field-input-wrapper .magic-extra-field-input {
+  flex: auto;
+}
+.magic-extra-filed-wrapper .magic-extra-field-input-wrapper .magic-extra-field-quantity-input {
+  width: 100px;
+}
+
+.magic-field-label .magic-extra-field-required {
+  color: #fb2c36;
 }

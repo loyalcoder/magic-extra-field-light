@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template for select field type
  *
@@ -22,23 +23,28 @@
  * }
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+if (! defined('ABSPATH')) {
+    exit; // Exit if accessed directly
 }
 $parent_class = ['magic-extra-field-field'];
 $parent_class[] = $args['type'] ? $args['type'] : '';
 ?>
 <div class="<?php echo esc_attr(join(' ', $parent_class)); ?>">
-    <?php if ( ! empty( $args['label'] ) ) : ?>
-        <label for="<?php echo esc_attr($args['id']); ?>" class="magic-extra-field-light-d-block"><?php echo esc_html($args['label']); ?></label>
+    <?php if (! empty($args['label'])) : ?>
+        <label for="<?php echo esc_attr($args['id']); ?>" class="magic-extra-field-light-d-block magic-field-label">
+            <?php echo esc_html($args['label']); ?>
+            <?php if ($args['required']) : ?>
+                <span class="magic-extra-field-required">*</span>
+            <?php endif; ?>
+        </label>
     <?php endif; ?>
     <div class="magic-extra-field-field-input">
         <select <?php echo wp_kses_data($this->attr_generate($args)); ?>>
-            <?php if ( ! empty( $args['placeholder'] ) ) : ?>
+            <?php if (! empty($args['placeholder'])) : ?>
                 <option value=""><?php echo esc_html($args['placeholder']); ?></option>
             <?php endif; ?>
-            <?php if ( ! empty( $args['options'] ) ) : ?>
-                <?php foreach ( $args['options'] as $value => $label ) : ?>
+            <?php if (! empty($args['options'])) : ?>
+                <?php foreach ($args['options'] as $value => $label) : ?>
                     <option value="<?php echo esc_attr($value); ?>" <?php selected($value, $args['value']); ?>><?php echo esc_html($label); ?></option>
                 <?php endforeach; ?>
             <?php endif; ?>

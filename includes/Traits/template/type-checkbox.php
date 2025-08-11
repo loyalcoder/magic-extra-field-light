@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template for checkbox field type
  *
@@ -21,24 +22,23 @@
  * }
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+if (! defined('ABSPATH')) {
+    exit; // Exit if accessed directly
 }
 $parent_class = ['magic-extra-field-field'];
 $parent_class[] = $args['type'] ? $args['type'] : '';
 ?>
 <div class="<?php echo esc_attr(join(' ', $parent_class)); ?>">
     <div class="magic-extra-field-field-input">
-        <input 
+        <input
             type="checkbox"
             id="<?php echo esc_attr($args['id']); ?>"
             name="<?php echo esc_attr($args['name']); ?>"
             value="<?php echo esc_attr($args['value']); ?>"
             <?php checked($args['checked'], true); ?>
             <?php echo $args['required'] ? 'required' : ''; ?>
-            class="<?php echo esc_attr($args['class']); ?>"
-        />
-        <?php if ( ! empty( $args['label'] ) ) : ?>
+            class="<?php echo esc_attr($args['class']); ?>" />
+        <?php if (! empty($args['label'])) : ?>
             <label for="<?php echo esc_attr($args['id']); ?>"><?php echo esc_html($args['label']); ?></label>
         <?php endif; ?>
     </div>

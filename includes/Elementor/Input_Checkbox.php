@@ -1,9 +1,11 @@
 <?php
+
 namespace MagicExtraFieldLight\Elementor;
 
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
+
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 use Elementor\Widget_Base;
@@ -12,37 +14,44 @@ use MagicExtraFieldLight\Traits\General_Style_Control;
 
 /**
  * Input_Checkbox Widget
- * 
+ *
  * A custom Elementor widget that adds checkbox input fields with customizable labels
  * and styling options.
  *
  * @since 1.0.0
  */
-class Input_Checkbox extends \Elementor\Widget_Base {
+class Input_Checkbox extends \Elementor\Widget_Base
+{
     use Fields;
     use General_Style_Control;
 
-    public function get_name() {
+    public function get_name()
+    {
         return 'magic_input_checkbox_light';
     }
 
-    public function get_title() {
+    public function get_title()
+    {
         return esc_html__('Magic Checkbox', 'magic-extra-field-light');
     }
 
-    public function get_icon() {
+    public function get_icon()
+    {
         return 'eicon-checkbox';
     }
 
-    public function get_categories() {
+    public function get_categories()
+    {
         return ['magic-extra-field-light'];
     }
 
-    public function get_style_depends() {
+    public function get_style_depends()
+    {
         return ['magic-extra-field-light-style'];
     }
 
-    protected function register_controls() {
+    protected function register_controls()
+    {
         // Content Section
         $this->start_controls_section(
             'content_section',
@@ -249,40 +258,44 @@ class Input_Checkbox extends \Elementor\Widget_Base {
         $this->add_label_style_controls('{{WRAPPER}} .magic-extra-field-field label');
         // checkbox style section
         $this->add_checkbox_style_controls('{{WRAPPER}} .magic-checkbox');
-
     }
 
-    protected function render() {
+    protected function render()
+    {
         $settings = $this->get_settings_for_display();
         $required = $settings['required'] === 'yes' ? 'required' : '';
-        ?>
-        <div class="magic-extra-field-checkbox-label">
+?>
+        <div class="magic-extra-field-checkbox-label magic-field-label">
             <?php echo esc_html($settings['field_label']); ?>
+            <?php if ($settings['required']) : ?>
+                <span class="magic-extra-field-required">*</span>
+            <?php endif; ?>
         </div>
-        <div class="magic-extra-field-checkbox-wrapper flex">
-        <?php 
-        foreach ($settings['checkbox_options'] as $index => $option) {
-            $filed_args = [];
-            $filed_args['type'] = 'checkbox';
-            $filed_args['label'] = $option['checkbox_label'];
-            $filed_args['value'] = $option['checkbox_value'];
-            $filed_args['checked'] = $option['is_checked'] === 'yes';
-            $filed_args['required'] = $required;
-            $filed_args['id'] = 'magic-checkbox-' . $this->get_id() . '-' . $index;
-            $filed_args['class'] = 'magic-checkbox';
-            $filed_args['name'] = $settings['field_name'] . '[]';
-            
-            echo wp_kses(
-                $this->checkbox_field($filed_args),
-                $this->allowed_generate_filed_html()
-            );
-        }
-        ?>
+        <div class="magic-extra-field-checkbox-wrapper">
+            <?php
+            foreach ($settings['checkbox_options'] as $index => $option) {
+                $filed_args = [];
+                $filed_args['type'] = 'checkbox';
+                $filed_args['label'] = $option['checkbox_label'];
+                $filed_args['value'] = $option['checkbox_value'];
+                $filed_args['checked'] = $option['is_checked'] === 'yes';
+                $filed_args['required'] = $required;
+                $filed_args['id'] = 'magic-checkbox-' . $this->get_id() . '-' . $index;
+                $filed_args['class'] = 'magic-checkbox';
+                $filed_args['name'] = $settings['field_name'] . '[]';
+
+                echo wp_kses(
+                    $this->checkbox_field($filed_args),
+                    $this->allowed_generate_filed_html()
+                );
+            }
+            ?>
         </div>
-        <?php
+<?php
     }
 
-    protected function content_template() {
+    protected function content_template()
+    {
         // Add JavaScript template for live preview if needed
     }
 }

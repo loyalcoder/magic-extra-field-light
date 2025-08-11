@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace MagicExtraFieldLight\Elementor;
 
 if (!defined('ABSPATH')) {
@@ -13,7 +13,7 @@ use MagicExtraFieldLight\Traits\General_Style_Control;
 
 /**
  * Input_Number Widget
- * 
+ *
  * A custom Elementor widget that adds a number input field with customizable label,
  * placeholder, min/max values and styling options.
  *
@@ -151,7 +151,7 @@ class Input_Number extends \Elementor\Widget_Base {
      */
     protected function render() {
         $settings = $this->get_settings_for_display();
-        
+
         $field_id                  = 'magic_input_' . $this->get_id();
         $required                  = $settings['required'] === 'yes' ? 'required' : '';
         $filed_args                = [];

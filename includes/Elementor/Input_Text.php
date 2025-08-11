@@ -12,7 +12,7 @@ use MagicExtraFieldLight\Traits\General_Style_Control;
 
 /**
  * Input_Text Widget
- * 
+ *
  * A custom Elementor widget that adds a text input field with customizable label,
  * placeholder, and styling options.
  *
@@ -155,7 +155,7 @@ class Input_Text extends \Elementor\Widget_Base {
         $required = $settings['required'] === 'yes' ? 'required' : '';
         $filed_args = [];
         $filed_args['type'] = 'text';
-        $filed_args['label'] = $settings['field_label']; 
+        $filed_args['label'] = $settings['field_label'];
         $filed_args['placeholder'] = $settings['placeholder'];
         $filed_args['required'] = $required;
         $filed_args['id'] = 'magic-input-text-' . $this->get_id();
@@ -175,7 +175,5 @@ class Input_Text extends \Elementor\Widget_Base {
      * @since 1.0.0
      * @access protected
      */
-    protected function content_template() {
-       
-    }
+    protected function content_template() {}
 }

@@ -1,4 +1,5 @@
 // Display utility classes
+.magic-extra-field-checkbox-label,
 .magic-extra-field-light-d-block {
   display: block;
   font-weight: 400;
@@ -11,6 +12,9 @@
   display: inline;
 }
 /*input type text style */
+.magic-input-tel,
+.magic-input-number,
+.magic-extra-field-quantity,
 .magic-input,
 .magic-input-text {
   display: block;
@@ -263,5 +267,50 @@ $font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   .radio-text,
   .checkbox-text {
     font-size: 0.9rem;
+  }
+}
+
+select.magic-input-select {
+  padding: 13px 12px;
+}
+
+textarea.magic-input-textarea {
+  font-family: inherit;
+}
+
+.magic-extra-filed-wrapper {
+  .magic-extra-filed-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 0.625rem;
+    .magic-field-label {
+      margin-bottom: 0;
+    }
+    .magic-field-label,
+    .magic-extra-field-price {
+      font-weight: 400;
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+    }
+  }
+  .magic-extra-field-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    .magic-extra-field-input {
+      flex: auto;
+    }
+    .magic-extra-field-quantity-input {
+      width: 100px;
+    }
+  }
+}
+
+.magic-field-label {
+  .magic-extra-field-required {
+    color: #fb2c36;
   }
 }

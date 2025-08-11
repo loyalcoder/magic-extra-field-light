@@ -9,7 +9,7 @@ if (!defined('ABSPATH')) {
 
 /**
  * Fields Trait
- * 
+ *
  * Handles common field functionality.
  */
 trait Fields
@@ -108,7 +108,7 @@ trait Fields
         }
         return ob_get_clean();
     }
-    
+
 
     /**
      * Generate HTML attributes for form fields
@@ -128,7 +128,7 @@ trait Fields
             if (empty($value)) {
                 continue;
             }
-            
+
             switch ($key) {
                 case 'type':
                     $attr .= ' type="' . esc_attr($value) . '"';
@@ -248,6 +248,11 @@ trait Fields
                 'for' => [],
                 'class' => [],
                 'form' => []
+            ],
+            'span' => [
+                'class' => [],
+                'style' => [],
+                'id' => [],
             ],
             'div' => [
                 'class' => [],

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template for textarea field type
  *
@@ -23,20 +24,25 @@
  * }
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+if (! defined('ABSPATH')) {
+    exit; // Exit if accessed directly
 }
 $parent_class = ['magic-extra-field-field'];
 $parent_class[] = $args['type'] ? $args['type'] : '';
 ?>
 <div class="<?php echo esc_attr(join(' ', $parent_class)); ?>">
-    <?php if ( ! empty( $args['label'] ) ) : ?>
-        <label for="<?php echo esc_attr($args['id']); ?>" class="magic-extra-field-light-d-block"><?php echo esc_html($args['label']); ?></label>
+    <?php if (! empty($args['label'])) : ?>
+        <label for="<?php echo esc_attr($args['id']); ?>" class="magic-extra-field-light-d-block magic-field-label">
+            <?php echo esc_html($args['label']); ?>
+            <?php if ($args['required']) : ?>
+                <span class="magic-extra-field-required">*</span>
+            <?php endif; ?>
+        </label>
     <?php endif; ?>
     <div class="magic-extra-field-field-input">
-        <?php 
-            unset($args['type']);
-            
+        <?php
+        unset($args['type']);
+
         ?>
         <textarea <?php echo wp_kses_data($this->attr_generate($args)); ?>><?php echo esc_textarea($args['value'] ?? ''); ?></textarea>
     </div>
