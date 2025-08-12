@@ -15,6 +15,9 @@
 }
 
 /*input type text style */
+.magic-input-password,
+.magic-input-textarea,
+.magic-input-email,
 .magic-input-tel,
 .magic-input-number,
 .magic-extra-field-quantity,
@@ -30,6 +33,9 @@
   border-radius: 0.5rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+.magic-input-password:focus,
+.magic-input-textarea:focus,
+.magic-input-email:focus,
 .magic-input-tel:focus,
 .magic-input-number:focus,
 .magic-extra-field-quantity:focus,
@@ -42,6 +48,9 @@
   outline-style: solid;
   border-color: #1b1e27;
 }
+.magic-input-password::placeholder,
+.magic-input-textarea::placeholder,
+.magic-input-email::placeholder,
 .magic-input-tel::placeholder,
 .magic-input-number::placeholder,
 .magic-extra-field-quantity::placeholder,
@@ -50,6 +59,9 @@
   color: #6c757d;
   opacity: 1;
 }
+.magic-input-password:disabled,
+.magic-input-textarea:disabled,
+.magic-input-email:disabled,
 .magic-input-tel:disabled,
 .magic-input-number:disabled,
 .magic-extra-field-quantity:disabled,
@@ -205,6 +217,34 @@ textarea.magic-input-textarea {
 }
 .magic-extra-filed-wrapper .magic-extra-field-input-wrapper .magic-extra-field-quantity-input {
   width: 100px;
+}
+.magic-extra-filed-wrapper.textarea .magic-extra-field-input-wrapper {
+  align-items: start;
+}
+
+.magic-extra-field-field.password .magic-extra-field-input.password-toggle-on {
+  position: relative;
+}
+.magic-extra-field-field.password .magic-extra-field-input.password-toggle-on .magic-input-password {
+  padding-right: 20px;
+}
+.magic-extra-field-field.password .magic-extra-field-input.password-toggle-on .magic-password-toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  padding: 3px 20px;
+  width: auto;
+  background: transparent;
+  border: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2724%27 height=%2724%27 fill=%27none%27 stroke=%27currentColor%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%272%27 class=%27lucide lucide-eye-off-icon lucide-eye-off%27%3E%3Cpath d=%27M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49M14.084 14.158a3 3 0 0 1-4.242-4.242%27/%3E%3Cpath d=%27M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143M2 2l20 20%27/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 1.2rem;
+  cursor: pointer;
+}
+.magic-extra-field-field.password .magic-extra-field-input.password-toggle-on .magic-password-toggle:focus {
+  outline: none;
 }
 
 .magic-field-label .magic-extra-field-required {
