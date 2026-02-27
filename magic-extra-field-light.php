@@ -2,17 +2,18 @@
 
 /**
  * Plugin Name:       Magic Extra Field Light
- * Plugin URI:        https://magic-extra-field.loyalcoder.com
+ * Plugin URI:        https://magic-extra-field.loyalcoders.com
  * Description:       Add custom extra fields to WooCommerce products using Elementor page builder - Light version
- * Version:           1.0.1
- * Author:            Loyalcoder
- * Author URI:        https://loyalcoder.com
+ * Version:           1.0.2
+ * Author:            Loyalcoders
+ * Author URI:        https://loyalcoders.com
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       magic-extra-field-light
  * Domain Path:       /languages
  * Elementor support: true
  * Requires at least: 5.8
+ * Tested up to:      6.9
  * Requires PHP:      7.4
  * WC requires at least: 6.8
  * WC tested up to:   9.9.4
@@ -35,7 +36,7 @@ final class Magic_Extra_Field_Light
      * 
      * @var string
      */
-    const version = '1.0.0';
+    const version = '1.0.2';
 
     /**
      * Constructor

@@ -25,10 +25,10 @@
 if (! defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
-$parent_class = ['magic-extra-field-field'];
-$parent_class[] = $args['type'] ? $args['type'] : '';
+$magic_ef_parent_class = ['magic-extra-field-field'];
+$magic_ef_parent_class[] = $args['type'] ? $args['type'] : '';
 ?>
-<div class="<?php echo esc_attr(join(' ', $parent_class)); ?>">
+<div class="<?php echo esc_attr(join(' ', $magic_ef_parent_class)); ?>">
     <?php if (! empty($args['label'])) : ?>
         <label for="<?php echo esc_attr($args['id']); ?>" class="magic-extra-field-light-d-block magic-field-label">
             <?php echo esc_html($args['label']); ?>

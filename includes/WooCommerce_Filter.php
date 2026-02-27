@@ -85,11 +85,11 @@ class WooCommerce_Filter {
                 $custom_text = is_array($_POST[$field['name']]) 
                     ? implode(',', array_map('sanitize_text_field', wp_unslash($_POST[$field['name']])))
                     : sanitize_text_field(wp_unslash($_POST[$field['name']]));
-                if(isset($_POST[$field['name'].'quantity'])){
-                    $cart_item_data[$field['name'].'quantity'] = $_POST[$field['name'].'quantity'];
+                if (isset($_POST[$field['name'] . 'quantity'])) {
+                    $cart_item_data[$field['name'] . 'quantity'] = absint(wp_unslash($_POST[$field['name'] . 'quantity']));
                 }
-                if(isset($_POST[$field['name'].'price'])){
-                    $cart_item_data[$field['name'].'price'] = $_POST[$field['name'].'price'];
+                if (isset($_POST[$field['name'] . 'price'])) {
+                    $cart_item_data[$field['name'] . 'price'] = sanitize_text_field(wp_unslash($_POST[$field['name'] . 'price']));
                 }
                 $cart_item_data[$field['name']] = $custom_text;
             }

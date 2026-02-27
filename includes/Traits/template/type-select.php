@@ -26,10 +26,10 @@
 if (! defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
-$parent_class = ['magic-extra-field-field'];
-$parent_class[] = $args['type'] ? $args['type'] : '';
+$magic_ef_parent_class = ['magic-extra-field-field'];
+$magic_ef_parent_class[] = $args['type'] ? $args['type'] : '';
 ?>
-<div class="<?php echo esc_attr(join(' ', $parent_class)); ?>">
+<div class="<?php echo esc_attr(join(' ', $magic_ef_parent_class)); ?>">
     <?php if (! empty($args['label'])) : ?>
         <label for="<?php echo esc_attr($args['id']); ?>" class="magic-extra-field-light-d-block magic-field-label">
             <?php echo esc_html($args['label']); ?>
@@ -44,8 +44,8 @@ $parent_class[] = $args['type'] ? $args['type'] : '';
                 <option value=""><?php echo esc_html($args['placeholder']); ?></option>
             <?php endif; ?>
             <?php if (! empty($args['options'])) : ?>
-                <?php foreach ($args['options'] as $value => $label) : ?>
-                    <option value="<?php echo esc_attr($value); ?>" <?php selected($value, $args['value']); ?>><?php echo esc_html($label); ?></option>
+                <?php foreach ($args['options'] as $magic_ef_value => $magic_ef_label) : ?>
+                    <option value="<?php echo esc_attr($magic_ef_value); ?>" <?php selected($magic_ef_value, $args['value']); ?>><?php echo esc_html($magic_ef_label); ?></option>
                 <?php endforeach; ?>
             <?php endif; ?>
         </select>

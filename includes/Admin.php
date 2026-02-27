@@ -83,12 +83,12 @@ class Admin
                                     <label for="selected_products"><?php echo esc_html__('Select Products', 'magic-extra-field-light'); ?></label>
                                     <select name="selected_products[]" id="selected_products" class="magic-ef-product-select" multiple="multiple">
                                         <?php
-                                        $products = wc_get_products(['status' => 'publish', 'limit' => -1]);
-                                        foreach ($products as $product) {
+                                        $magic_ef_products = wc_get_products(['status' => 'publish', 'limit' => -1]);
+                                        foreach ($magic_ef_products as $magic_ef_product) {
                                             printf(
                                                 '<option value="%s">%s</option>',
-                                                esc_attr($product->get_id()),
-                                                esc_html($product->get_name())
+                                                esc_attr($magic_ef_product->get_id()),
+                                                esc_html($magic_ef_product->get_name())
                                             );
                                         }
                                         ?>

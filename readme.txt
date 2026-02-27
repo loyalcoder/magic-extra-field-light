@@ -2,8 +2,8 @@
 Contributors: loyalcoder
 Tags: woocommerce, elementor, custom fields, product fields
 Requires at least: 5.8
-Tested up to: 6.8
-Stable tag: 1.0.1
+Tested up to: 6.9
+Stable tag: 1.0.2
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -90,4 +90,24 @@ To modify the plugin's frontend or admin interface:
 3. Test your modifications
 
 The source code is also available on GitHub: https://github.com/loyalcoder/magic-extra-field-light
+
+== Changelog ==
+
+= 1.0.2 =
+* Security: Added capability checks to AJAX handlers.
+* Security: Improved input sanitization and unslashing for all request data.
+* Security: Escaped style attributes in admin templates.
+* Compatibility: Tested up to WordPress 6.9.
+* Code: WordPress coding standards (PHPCS/WPCS) and prefixed global variables.
+
+= 1.0.1 =
+* Bug fixes and improvements.
+
+= 1.0.0 =
+* Initial release.
+
+== Upgrade Notice ==
+
+= 1.0.2 =
+Security and compatibility update. Recommended for all users. Tested with WordPress 6.9.
 
